@@ -23,6 +23,7 @@ class CreatePlacesTable extends Migration
             $table->string('longitude');
 
             $table->integer('user_id')->index();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

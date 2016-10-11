@@ -13,6 +13,7 @@ $api->version('v1', function ($api) {
 	$api->group(['middleware' => 'api.auth'], function ($api) {
 		$api->post('place/store', 'App\Api\V1\Controllers\PlaceController@store');
 		$api->post('food/store', 'App\Api\V1\Controllers\FoodController@store');
+		$api->post('drink/store', 'App\Api\V1\Controllers\DrinkController@store');
 
 	});
 	$api->get('places/{id}', 'App\Api\V1\Controllers\PlaceController@show');

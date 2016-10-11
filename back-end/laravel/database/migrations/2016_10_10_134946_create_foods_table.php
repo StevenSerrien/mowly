@@ -17,7 +17,7 @@ class CreateFoodsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 10, 2);
-
+            
 
             $table->integer('place_id')->index();
             $table->softDeletes();

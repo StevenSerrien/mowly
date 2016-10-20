@@ -14,8 +14,8 @@ var AppComponent = (function () {
     }
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: '<h1>Ik ben Fransje</h1>'
+            selector: 'mowly-app',
+            templateUrl: 'app/some.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

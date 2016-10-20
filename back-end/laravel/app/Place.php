@@ -14,7 +14,7 @@ class Place extends Model
 
     public function drinks()
     {
-      return $this->hasMany('App\Place');
+      return $this->hasMany('App\Drink');
     }
 
     public function foods()

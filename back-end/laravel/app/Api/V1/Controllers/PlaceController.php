@@ -44,7 +44,10 @@ class PlaceController extends Controller
 
   public function show($id)
   {
-    $place = Place::find($id);
+    $place = Place::with('drinks', 'foods')->find($id);
+
+    //$place->load('drinks', 'foods');
+
 
     if(!$place){
       throw new NotFoundHttpException;

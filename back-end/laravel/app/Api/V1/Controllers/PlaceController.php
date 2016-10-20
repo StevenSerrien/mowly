@@ -53,6 +53,19 @@ class PlaceController extends Controller
     return $place;
   }
 
+  // search for foods and return every place that has it.
+    public function searchPlaces(Request $request)
+    {
+      if ($request->get("placequery") == '') {
+        //searchstring can not be empty
+        return 'Empty searchstring :-(';
+      } else {
+        $query =  '%'.$request->get("placequery").'%';
+        $places = Place::where('name', 'LIKE', $query)->get();
+        return $places;
+      }
+    }
+
   //easy function that returns currently logged in user
   private function currentUser()
   {

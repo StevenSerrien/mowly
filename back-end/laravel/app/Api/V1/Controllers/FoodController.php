@@ -42,6 +42,19 @@ class FoodController extends Controller
 
   }
 
+// search for foods and return every place that has it.
+  public function searchFoods(Request $request)
+  {
+    if ($request->get("foodquery") == '') {
+      //searchstring can not be empty 
+      return 'Empty searchstring :-(';
+    } else {
+      $query =  '%'.$request->get("foodquery").'%';
+      $foods = Food::with('place')->where('name', 'LIKE', $query)->get();
+      return $foods;
+    }
+  }
+
   //easy function that returns currently logged in user
   private function currentUser()
   {

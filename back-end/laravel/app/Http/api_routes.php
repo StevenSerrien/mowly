@@ -20,6 +20,7 @@ $api->version('v1', function ($api) {
 	//routing where log in is not needed.
 	$api->get('places/{id}', 'App\Api\V1\Controllers\PlaceController@show');
 	$api->get('places', 'App\Api\V1\Controllers\PlaceController@index');
-
+	$api->post('food/search', 'App\Api\V1\Controllers\FoodController@searchFoods');
+	$api->post('drink/search', 'App\Api\V1\Controllers\DrinkController@searchDrinks');
 
 });

@@ -41,6 +41,19 @@ class DrinkController extends Controller
     }
   }
 
+// search for drinks and return every place that has it.
+  public function searchDrinks(Request $request)
+  {
+    //searchstring can not be empty
+    if ($request->get("drinkquery") == '') {
+      return 'Empty searchstring :-(';
+    } else {
+      $query =  '%'.$request->get("drinkquery").'%';
+      $drinks = Drink::with('place')->where('name', 'LIKE', $query)->get();
+      return $drinks;
+    }
+  }
+
   //easy function that returns currently logged in user
   private function currentUser()
   {

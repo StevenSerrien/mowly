@@ -11,5 +11,8 @@ class Food extends Model
   protected $fillable = ['name', 'description', 'price'];
   protected $dates = ['deleted_at'];
 
-
+  public function place()
+  {
+    return $this->belongsTo('App\Place');
+  }
 }

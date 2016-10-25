@@ -9,16 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var place_service_1 = require('../services/place.service');
 var SearchComponent = (function () {
-    function SearchComponent() {
+    //Constructor for PlaceService
+    function SearchComponent(placeService) {
+        this.placeService = placeService;
     }
+    SearchComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.placeService.getPlaces()
+            .subscribe(function (data) { return _this.places = data; });
+    };
     SearchComponent = __decorate([
         core_1.Component({
             selector: 'search-component',
             templateUrl: 'app/search/search.component.html',
             styleUrls: ['app/search/search.component.css'],
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [place_service_1.PlaceService])
     ], SearchComponent);
     return SearchComponent;
 }());

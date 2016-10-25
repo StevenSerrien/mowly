@@ -10,14 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var appSettings_1 = require('../appSettings');
 require('rxjs/add/operator/map');
 var PlaceService = (function () {
     function PlaceService(http) {
         this.http = http;
     }
     PlaceService.prototype.getPlaces = function () {
-        return this.http.get('http://mowly-backend.dev/api/places')
-            .map(function (response) { return response.json(); });
+        return this.http.get(appSettings_1.AppSettings.API_ENDPOINT + "/places")
+            .map(function (response) { return response.json().places; });
     };
     PlaceService = __decorate([
         core_1.Injectable(), 

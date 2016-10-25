@@ -16,9 +16,12 @@ var PlaceService = (function () {
     function PlaceService(http) {
         this.http = http;
     }
-    PlaceService.prototype.getPlaces = function () {
+    PlaceService.prototype.getAllPlaces = function () {
         return this.http.get(appSettings_1.AppSettings.API_ENDPOINT + "/places")
             .map(function (response) { return response.json().places; });
+    };
+    PlaceService.prototype.getAllPlacesByName = function () {
+        //return this.http.post(`${AppSettings.API_ENDPOINT}/places/search`)
     };
     PlaceService = __decorate([
         core_1.Injectable(), 

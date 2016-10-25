@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 @Component({
   selector: 'mowly-app',
-  templateUrl: 'app/some.component.html'
+  templateUrl: 'app/main.component.html'
 })
 export class AppComponent { }

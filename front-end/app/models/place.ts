@@ -4,7 +4,7 @@ export class Place {
   streetname: string;
   housenumber: string;
   city: string;
-  latitude: number;
-  longitude: number;
-
+  latitude: string;
+  longitude: string;
+  user_id: number;
 }

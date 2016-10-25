@@ -5,6 +5,7 @@ import { AppComponent }   from './app.component';
 import { HomeComponent }   from './home.component';
 import { SearchComponent } from './search/search.component';
 import { BusinessComponent } from './business/business.component';
+import { SearchResultsComponent } from './searchresults/searchresults.component';
 
 
 import { RouterModule }   from '@angular/router';
@@ -19,8 +20,9 @@ import { PlaceService } from './services/place.service';
     RouterModule.forRoot ([
       { path: '', component: HomeComponent},
       { path: 'business', component: BusinessComponent},
+      { path: 'results', component: SearchResultsComponent},
     ])],
-    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchComponent ],
+    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent ],
     providers:    [ PlaceService ],
     bootstrap:    [ AppComponent ]
   })

@@ -14,6 +14,7 @@ var app_component_1 = require('./app.component');
 var home_component_1 = require('./home.component');
 var search_component_1 = require('./search/search.component');
 var business_component_1 = require('./business/business.component');
+var searchresults_component_1 = require('./searchresults/searchresults.component');
 var router_1 = require('@angular/router');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
@@ -27,8 +28,9 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([
                     { path: '', component: home_component_1.HomeComponent },
                     { path: 'business', component: business_component_1.BusinessComponent },
+                    { path: 'results', component: searchresults_component_1.SearchResultsComponent },
                 ])],
-            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, business_component_1.BusinessComponent, search_component_1.SearchComponent],
+            declarations: [app_component_1.AppComponent, home_component_1.HomeComponent, business_component_1.BusinessComponent, searchresults_component_1.SearchResultsComponent, search_component_1.SearchComponent],
             providers: [place_service_1.PlaceService],
             bootstrap: [app_component_1.AppComponent]
         }), 

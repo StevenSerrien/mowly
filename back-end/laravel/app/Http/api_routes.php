@@ -21,20 +21,19 @@ $api->version('v1', function ($api) {
 	//routing where log in is not needed.
 	$api->get('places/{id}', 'App\Api\V1\Controllers\PlaceController@show');
 	$api->get('places', 'App\Api\V1\Controllers\PlaceController@index');
-
 	$api->get('foods', 'App\Api\V1\Controllers\FoodController@index');
 
 
 	//search routing
 	//searches for foods and returns them with the place.
-	$api->post('food/search', 'App\Api\V1\Controllers\FoodController@searchFoods');
+	$api->get('food/search', 'App\Api\V1\Controllers\FoodController@searchFoods');
 	//searches for drinks and returns them with the place.
-	$api->post('drink/search', 'App\Api\V1\Controllers\DrinkController@searchDrinks');
+	$api->get('drink/search', 'App\Api\V1\Controllers\DrinkController@searchDrinks');
 	//searches for places and returns them.
-	$api->post('place/search', 'App\Api\V1\Controllers\PlaceController@searchPlaces');
+	$api->get('place/search', 'App\Api\V1\Controllers\PlaceController@searchPlaces');
 	//searches for places WITH query nearby user and returns them.
-	$api->post('place/searchwithlocation', 'App\Api\V1\Controllers\PlaceController@searchPlacesWithLocation');
+	$api->get('place/searchwithlocation', 'App\Api\V1\Controllers\PlaceController@searchPlacesWithLocation');
 	//searches for places WITHOUT query nearby user and returns them.
-	$api->post('place/searchnearbylocation', 'App\Api\V1\Controllers\PlaceController@searchNearbyLocation');
+	$api->get('place/searchnearbylocation', 'App\Api\V1\Controllers\PlaceController@searchNearbyLocation');
 
 });

@@ -55,11 +55,11 @@ class PlaceController extends Controller
   // search for places with query.
   public function searchPlaces(Request $request)
   {
-    if ($request->get("placequery") == '') {
+    if ($request->input("placequery") == '') {
       //searchstring can not be empty
       return 'Empty searchstring :-(';
     } else {
-      $query =  '%'.$request->get("placequery").'%';
+      $query =  '%'.$request->input("placequery").'%';
       $places = Place::where('name', 'LIKE', $query)->get();
       return $places;
     }
@@ -67,15 +67,15 @@ class PlaceController extends Controller
   // search for places with query, nearby user.
   public function searchPlacesWithLocation(Request $request)
   {
-    if ($request->get("placequery") == '') {
+    if ($request->input("placequery") == '') {
       //searchstring can not be empty
       return 'Empty searchstring :-(';
     } else {
-      $query =  '%'.$request->get("placequery").'%';
-      $from_latitude = $request->get("user_latitude");
-      $from_longitude = $request->get("user_longitude");
+      $query =  '%'.$request->input("placequery").'%';
+      $from_latitude = $request->input("user_latitude");
+      $from_longitude = $request->input("user_longitude");
       //distance is in m
-      $distance = $request->get("distance");
+      $distance = $request->input("distance");
       $places = Place::where('name', 'LIKE', $query)->distance($from_latitude,$from_longitude,$distance)->get();
       return $places;
     }
@@ -84,10 +84,10 @@ class PlaceController extends Controller
   // Get all places nearby user.
   public function searchNearbyLocation(Request $request)
   {
-      $from_latitude = $request->get("user_latitude");
-      $from_longitude = $request->get("user_longitude");
+      $from_latitude = $request->input("user_latitude");
+      $from_longitude = $request->input("user_longitude");
       //distance is in m
-      $distance = $request->get("distance");
+      $distance = $request->input("distance");
       $places = Place::distance($from_latitude,$from_longitude,$distance)->get();
       return $places;
   }

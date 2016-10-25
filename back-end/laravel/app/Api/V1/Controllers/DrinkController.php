@@ -45,10 +45,10 @@ class DrinkController extends Controller
   public function searchDrinks(Request $request)
   {
     //searchstring can not be empty
-    if ($request->get("drinkquery") == '') {
+    if ($request->input("drinkquery") == '') {
       return 'Empty searchstring :-(';
     } else {
-      $query =  '%'.$request->get("drinkquery").'%';
+      $query =  '%'.$request->input("drinkquery").'%';
       $drinks = Drink::with('place')->where('name', 'LIKE', $query)->get();
       return $drinks;
     }

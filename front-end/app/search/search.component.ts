@@ -12,7 +12,6 @@ import { Router, NavigationExtras }  from '@angular/router';
 })
 export class SearchComponent {
   places: Place[];
-  placesResults: Place[];
 
   //Constructor for PlaceService
   constructor(private placeService: PlaceService, private router: Router) { }
@@ -22,6 +21,7 @@ export class SearchComponent {
   ngOnInit() {
     this.placeService.sGetAllPlaces()
     .subscribe(data => this.places = data);
+
 
   }
 
@@ -36,4 +36,6 @@ export class SearchComponent {
     this.router.navigate(['/results'], navigationExtras);
     return false;
   }
+
+
 }

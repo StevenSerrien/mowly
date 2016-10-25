@@ -15,7 +15,7 @@
         <form novalidate="novalidate" onsubmit="return false;" class="searchbox sbx-custom">
           <div role="search" class="sbx-google__wrapper">
             <input type="search" name="search" placeholder="Search by place, food or drinks.." autocomplete="off" required="required" class="sbx-custom__input">
-            <button type="submit" title="Find your stuff!" class="sbx-custom__submit">
+            <button type="submit" title="Find your stuff!" class="sbx-custom__submit" (click)="getPlacesBySearch(search.value)">
               <svg role="img" aria-label="Search">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#sbx-icon-search-13"></use>
               </svg>

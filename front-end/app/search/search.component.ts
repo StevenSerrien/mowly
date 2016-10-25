@@ -20,4 +20,10 @@ export class SearchComponent {
     .subscribe(data => this.places = data);
   }
 
+  getPlaceBySearch(searchQuery) {
+
+  }
+
+
+
 }

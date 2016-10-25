@@ -20,6 +20,8 @@ var SearchComponent = (function () {
         this.placeService.getPlaces()
             .subscribe(function (data) { return _this.places = data; });
     };
+    SearchComponent.prototype.getPlaceBySearch = function (searchQuery) {
+    };
     SearchComponent = __decorate([
         core_1.Component({
             selector: 'search-component',

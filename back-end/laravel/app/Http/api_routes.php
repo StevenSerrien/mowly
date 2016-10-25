@@ -20,6 +20,9 @@ $api->version('v1', function ($api) {
 	$api->get('places/{id}', 'App\Api\V1\Controllers\PlaceController@show');
 	$api->get('places', 'App\Api\V1\Controllers\PlaceController@index');
 
+	$api->get('foods', 'App\Api\V1\Controllers\FoodController@index');
+
+
 	//search routing
 	//searches for foods and returns them with the place.
 	$api->post('food/search', 'App\Api\V1\Controllers\FoodController@searchFoods');

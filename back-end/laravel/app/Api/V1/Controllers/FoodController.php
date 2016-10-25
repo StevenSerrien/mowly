@@ -46,13 +46,21 @@ class FoodController extends Controller
   public function searchFoods(Request $request)
   {
     if ($request->get("foodquery") == '') {
-      //searchstring can not be empty 
+      //searchstring can not be empty
       return 'Empty searchstring :-(';
     } else {
       $query =  '%'.$request->get("foodquery").'%';
       $foods = Food::with('place')->where('name', 'LIKE', $query)->get();
       return $foods;
     }
+  }
+
+  public function index()
+  {
+      $foods = Food::orderBy('created_at', 'DESC')
+      ->get();
+
+      return $foods;
   }
 
   //easy function that returns currently logged in user

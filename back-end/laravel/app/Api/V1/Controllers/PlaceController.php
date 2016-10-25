@@ -18,8 +18,7 @@ class PlaceController extends Controller
   public function index()
   {
     $places = Place::orderBy('created_at', 'DESC')
-    ->get()
-    ->toArray();
+    ->get();
 
     return $places;
   }

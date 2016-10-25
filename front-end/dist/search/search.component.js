@@ -9,26 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
 var place_service_1 = require('../services/place.service');
+var router_1 = require('@angular/router');
 var SearchComponent = (function () {
     //Constructor for PlaceService
-    function SearchComponent(placeService) {
+    function SearchComponent(placeService, router) {
         this.placeService = placeService;
+        this.router = router;
     }
     SearchComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.placeService.sGetAllPlaces()
             .subscribe(function (data) { return _this.places = data; });
-        this.getPlaceByName('ot');
     };
-    SearchComponent.prototype.getPlaceByName = function (searchQuery) {
-        var _this = this;
-        // Parameters obj-
-        var params = new http_1.URLSearchParams();
-        params.set('placequery', searchQuery);
-        this.placeService.sGetPlacesByName(params)
-            .subscribe(function (data) { return _this.placesResults = data; });
+    SearchComponent.prototype.searchQuery = function (params) {
+        // Set our navigation extras object
+        // that contains our global query params and fragment
+        var navigationExtras = {
+            queryParams: { 'query': params }
+        };
+        // Navigate to the login page with extras
+        this.router.navigate(['/results'], navigationExtras);
+        return false;
     };
     SearchComponent = __decorate([
         core_1.Component({
@@ -36,7 +38,7 @@ var SearchComponent = (function () {
             templateUrl: 'app/search/search.component.html',
             styleUrls: ['app/search/search.component.css'],
         }), 
-        __metadata('design:paramtypes', [place_service_1.PlaceService])
+        __metadata('design:paramtypes', [place_service_1.PlaceService, router_1.Router])
     ], SearchComponent);
     return SearchComponent;
 }());

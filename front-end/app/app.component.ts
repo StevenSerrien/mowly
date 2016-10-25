@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { SearchComponent } from './search/search.component';
+
 @Component({
-  selector: 'my-app',
-  template: '<h1>Ik ben Fransje</h1>'
+  selector: 'mowly-app',
+  templateUrl: 'app/main.component.html'
 })
 export class AppComponent { }

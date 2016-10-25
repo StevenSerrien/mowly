@@ -9,6 +9,5 @@
     "removeComments": false,
     "noImplicitAny": false,
     "outDir": "dist"
-  },
-  "compileOnSave": false
+  }
 }

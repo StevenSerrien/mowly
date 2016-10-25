@@ -16,12 +16,14 @@ var PlaceService = (function () {
     function PlaceService(http) {
         this.http = http;
     }
-    PlaceService.prototype.getAllPlaces = function () {
+    PlaceService.prototype.sGetAllPlaces = function () {
         return this.http.get(appSettings_1.AppSettings.API_ENDPOINT + "/places")
             .map(function (response) { return response.json().places; });
     };
-    PlaceService.prototype.getAllPlacesByName = function () {
-        //return this.http.post(`${AppSettings.API_ENDPOINT}/places/search`)
+    PlaceService.prototype.sGetPlacesByName = function (params) {
+        return this.http.get(appSettings_1.AppSettings.API_ENDPOINT + "/place/search", {
+            search: params
+        }).map(function (response) { return response.json().places; });
     };
     PlaceService = __decorate([
         core_1.Injectable(), 

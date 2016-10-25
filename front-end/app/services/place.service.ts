@@ -8,13 +8,15 @@ import 'rxjs/add/operator/map';
 export class PlaceService {
   constructor(private http: Http) { }
 
-  getAllPlaces() {
+  sGetAllPlaces() {
     return this.http.get(`${AppSettings.API_ENDPOINT}/places`)
           .map(response => <Place[]>response.json().places);
   }
 
-  getAllPlacesByName() {
-    //return this.http.post(`${AppSettings.API_ENDPOINT}/places/search`)
+  sGetPlacesByName(params) {
+      return this.http.get(`${AppSettings.API_ENDPOINT}/place/search`, {
+          search: params
+      }).map(response => <Place[]>response.json().places);
   }
 
 }

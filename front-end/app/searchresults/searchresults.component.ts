@@ -3,6 +3,8 @@ import { SearchComponent } from '../search/search.component';
 import { PlaceService } from '../services/place.service';
 import { Place } from '../models/place';
 import { URLSearchParams } from '@angular/http';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 
 
 @Component({
@@ -12,14 +14,30 @@ import { URLSearchParams } from '@angular/http';
 })
 export class SearchResultsComponent {
   placesResults: Place[];
+  paramsSub: any;
+  name: string;
 
   //Constructor for PlaceService
-  constructor(private placeService: PlaceService) { }
+  constructor(private placeService: PlaceService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-        this.getPlaceByName('ot');
+
+    // //Get Params from URL
+    // this.activatedRoute.params.forEach((params: Params) =>  {
+    //   this.name= params['query'];  //get your param
+    //
+    // });
+
+    this.name = this.activatedRoute.queryParams['query'];
+
+
+
+
+    this.getPlaceByName(name);
+
+
   }
-  
+
   getPlaceByName(searchQuery: string) {
     // Parameters obj-
     let params: URLSearchParams = new URLSearchParams();

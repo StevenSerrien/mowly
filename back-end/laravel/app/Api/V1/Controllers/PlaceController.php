@@ -17,11 +17,11 @@ class PlaceController extends Controller
   //get all places
   public function index()
   {
-      $places = Place::orderBy('created_at', 'DESC')
-      ->get()
-      ->toArray();
+    $places = Place::orderBy('created_at', 'DESC')
+    ->get()
+    ->toArray();
 
-      return $places;
+    return $places;
   }
 
   public function store(Request $request)
@@ -53,18 +53,45 @@ class PlaceController extends Controller
     return $place;
   }
 
-  // search for foods and return every place that has it.
-    public function searchPlaces(Request $request)
-    {
-      if ($request->get("placequery") == '') {
-        //searchstring can not be empty
-        return 'Empty searchstring :-(';
-      } else {
-        $query =  '%'.$request->get("placequery").'%';
-        $places = Place::where('name', 'LIKE', $query)->get();
-        return $places;
-      }
+  // search for places with query.
+  public function searchPlaces(Request $request)
+  {
+    if ($request->get("placequery") == '') {
+      //searchstring can not be empty
+      return 'Empty searchstring :-(';
+    } else {
+      $query =  '%'.$request->get("placequery").'%';
+      $places = Place::where('name', 'LIKE', $query)->get();
+      return $places;
     }
+  }
+  // search for places with query, nearby user.
+  public function searchPlacesWithLocation(Request $request)
+  {
+    if ($request->get("placequery") == '') {
+      //searchstring can not be empty
+      return 'Empty searchstring :-(';
+    } else {
+      $query =  '%'.$request->get("placequery").'%';
+      $from_latitude = $request->get("user_latitude");
+      $from_longitude = $request->get("user_longitude");
+      //distance is in m
+      $distance = $request->get("distance");
+      $places = Place::where('name', 'LIKE', $query)->distance($from_latitude,$from_longitude,$distance)->get();
+      return $places;
+    }
+  }
+
+  // Get all places nearby user.
+  public function searchNearbyLocation(Request $request)
+  {
+      $from_latitude = $request->get("user_latitude");
+      $from_longitude = $request->get("user_longitude");
+      //distance is in m
+      $distance = $request->get("distance");
+      $places = Place::distance($from_latitude,$from_longitude,$distance)->get();
+      return $places;
+  }
 
   //easy function that returns currently logged in user
   private function currentUser()

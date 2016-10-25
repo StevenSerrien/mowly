@@ -16,12 +16,12 @@ export class SearchComponent {
 
 
   ngOnInit() {
-    this.placeService.getPlaces()
+    this.placeService.getAllPlaces()
     .subscribe(data => this.places = data);
   }
 
   getPlaceBySearch(searchQuery) {
-    
+
   }
 
 

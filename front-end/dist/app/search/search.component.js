@@ -17,7 +17,7 @@ var SearchComponent = (function () {
     }
     SearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.placeService.getPlaces()
+        this.placeService.getAllPlaces()
             .subscribe(function (data) { return _this.places = data; });
     };
     SearchComponent.prototype.getPlaceBySearch = function (searchQuery) {

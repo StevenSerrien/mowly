@@ -53,11 +53,6 @@ export class SearchResultsComponent {
        this.getFoodByName(query);
        this.getDrinkByName(query);
     });
-
-
-
-
-
   }
 
   getDrinkByName(searchQuery: string) {

@@ -1,6 +1,6 @@
 <div class="col-lg-6 col-lg-offset-3">
     <h2>Login to your business.</h2>
-    <form name="form" (ngSubmit)="f.form.valid && login(model.email, model.password)" #f="ngForm" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && login2(model.email, model.password); $event.stopPropagation()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
@@ -20,6 +20,9 @@
     <div class="">
       jouw token is:
         {{token}}
+        <br>
+        jouw error message is: 
+        {{errorMessage}}
     </div>
 
 </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -14,6 +13,7 @@ export class LoginComponent {
   model: any = {};
   loading = false;
   token: string;
+  errorMessage: string;
 
   constructor(
     private router: Router,
@@ -27,6 +27,8 @@ export class LoginComponent {
       // this.login('edward@edward.edward', '123456789');
     }
 
+    //the promise way
+
     login(email: string, password: string): void {
       email = email.trim();
       if (!email) { return; }
@@ -36,6 +38,25 @@ export class LoginComponent {
         else {
           this.token = data['token'];
           console.log(data);
+        }
+      });
+    }
+
+    //the observer way
+
+    login2(email: string, password: string){
+      this.loading = true;
+      this.authenticationService.login2(email, password)
+      .subscribe(result => {
+        if (result === true) {
+          // login successful
+          this.token = this.authenticationService.token;
+          // this.router.navigate(['/']);
+          this.loading = false;
+        } else {
+          // login failed
+          this.errorMessage = 'Username or password is incorrect';
+          this.loading = false;
         }
       });
     }

@@ -27,6 +27,7 @@ $api->version('v1', function ($api) {
 	//search routing
 	//searches for foods and returns them with the place.
 	$api->get('food/search', 'App\Api\V1\Controllers\FoodController@searchFoods');
+	$api->get('food/searchwithlocation', 'App\Api\V1\Controllers\FoodController@searchFoodsWithLocation');
 	//searches for drinks and returns them with the place.
 	$api->get('drink/search', 'App\Api\V1\Controllers\DrinkController@searchDrinks');
 	//searches for places and returns them.

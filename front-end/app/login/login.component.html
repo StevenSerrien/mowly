@@ -1,7 +1,7 @@
 <div class="col-lg-6 col-lg-offset-3">
     <h2>Login to your business.</h2>
-    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+    <form name="form" (ngSubmit)="f.form.valid && login(model.email, model.password)" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
             <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
@@ -17,4 +17,9 @@
             <a [routerLink]="['/register']" class="btn btn-link">Register</a>
         </div>
     </form>
+    <div class="">
+      jouw token is:
+        {{token}}
+    </div>
+
 </div>

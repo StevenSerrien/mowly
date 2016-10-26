@@ -9,8 +9,11 @@ export class AuthenticationService {
     constructor(private http: Http) { }
 
     login(email, password) {
+      const headers = new Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-        return this.http.post(`${AppSettings.API_ENDPOINT}/auth/login`, JSON.stringify({ email: email, password: password }))
+
+        return this.http.post(`${AppSettings.API_ENDPOINT}/auth/login`, JSON.stringify({ email: email, password: password }), {headers})
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();

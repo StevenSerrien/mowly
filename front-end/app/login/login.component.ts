@@ -21,7 +21,7 @@ export class LoginComponent {
     ngOnInit() {
         // reset login status
         this.authenticationService.login('stevenserrien@gmail.com', 'test123');
-        this.authenticationService.logout();
+        //this.authenticationService.logout();
     }
 
     login() {

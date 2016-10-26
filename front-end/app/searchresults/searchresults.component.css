@@ -1,0 +1,18 @@
+/* #2e3333 grey */
+/* #f65d59 brandcolor */
+/* #bac3c3 letters on grey */
+
+
+
+.searchresultsgreet {
+  color: #f65d59;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+
+
+.searchresults i.fa {
+  font-size: 2.5em;
+  color: #f65d59;
+}

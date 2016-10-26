@@ -33,7 +33,12 @@
  				<div class="col-md-4 col-sm-12 drinkresults">
           <div>
  					<i class="fa fa-beer"></i>
-
+          <h4>Drinks with names like '{{this.searchQuery}}'</h4>
+          <div *ngFor="let drink of drinksResults" class="text-left">
+            <h4>{{drink.name}}</h4>
+            <p></p>
+            <p>{{drink.price | currency:'EUR':true:'1.2-2'}}, {{drink.place.name}}</p>
+          </div>
 
  				</div>
       </div>

@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 import { PlaceService } from './services/place.service';
 import { FoodService } from './services/food.service';
+import { DrinkService } from './services/drink.service';
 import { GeolocationService } from './services/geolocation.service';
 
 
@@ -26,7 +27,7 @@ import { GeolocationService } from './services/geolocation.service';
       { path: 'results', component: SearchResultsComponent},
     ])],
     declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent ],
-    providers:    [ PlaceService, FoodService,GeolocationService ],
+    providers:    [ PlaceService, FoodService, DrinkService, GeolocationService ],
     bootstrap:    [ AppComponent ]
   })
   export class AppModule { }

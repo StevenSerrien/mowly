@@ -3,9 +3,11 @@ import { SearchComponent } from '../search/search.component';
 
 import { PlaceService } from '../services/place.service';
 import { FoodService } from '../services/food.service';
+import { DrinkService } from '../services/drink.service';
 
 import { Place } from '../models/place';
 import { Food } from '../models/food';
+import { Drink } from '../models/drink';
 
 import { URLSearchParams } from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -21,6 +23,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class SearchResultsComponent {
   placesResults: Place[];
   foodsResults: Food[];
+  drinksResults: Drink[];
   paramsSub: any;
   searchQuery: any;
 
@@ -28,6 +31,7 @@ export class SearchResultsComponent {
   constructor(
     private placeService: PlaceService,
     private foodService: FoodService,
+    private drinkService: DrinkService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
@@ -46,7 +50,8 @@ export class SearchResultsComponent {
        this.searchQuery = params['query'];
        console.log(query);
        this.getPlaceByName(query);
-       this.getFoodByName(query)
+       this.getFoodByName(query);
+       this.getDrinkByName(query);
     });
 
 
@@ -54,6 +59,15 @@ export class SearchResultsComponent {
 
 
   }
+
+  getDrinkByName(searchQuery: string) {
+    // Parameters obj-
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('drinkquery', searchQuery);
+    this.drinkService.sGetDrinksByName(params)
+    .subscribe(data => this.drinksResults = data);
+  }
+
 
   getFoodByName(searchQuery: string) {
     // Parameters obj-

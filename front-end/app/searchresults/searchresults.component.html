@@ -7,7 +7,7 @@
  				<div class="col-md-4 col-sm-12 placeresults ">
           <div>
  					<i class="fa fa-map-marker text-center"></i>
-          <h4>Places with names like '{{this.placeName}}'</h4>
+          <h4>Places with names like '{{this.searchQuery}}'</h4>
           <div *ngFor="let place of placesResults" class="text-left">
             <h2>{{place.name}}</h2>
             <p>{{place.streetname}} {{place.housenumber}}</p>
@@ -21,7 +21,12 @@
  				<div class="col-md-4 col-sm-12 foodresults">
           <div>
  					<i class="fa fa-cutlery"></i>
-
+          <h4>Foods with names like '{{this.searchQuery}}'</h4>
+          <div *ngFor="let food of foodsResults" class="text-left">
+            <h4>{{food.name}}</h4>
+            <p></p>
+            <p>{{food.price | currency:'EUR':true:'1.2-2'}}, {{food.place.name}}</p>
+          </div>
 
  				</div>
       </div>

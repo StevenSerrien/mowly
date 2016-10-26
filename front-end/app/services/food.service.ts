@@ -15,4 +15,10 @@ export class FoodService {
     //and the array we want is under the foods keyword
     return this.http.get(`${AppSettings.API_ENDPOINT}/foods`).map(response => <Food[]>response.json().foods);
   }
+
+  sGetFoodsByName(params) {
+      return this.http.get(`${AppSettings.API_ENDPOINT}/food/search`, {
+          search: params
+      }).map(response => <Food[]>response.json().foods);
+  }
 }

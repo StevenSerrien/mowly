@@ -13,6 +13,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { PlaceService } from './services/place.service';
+import { FoodService } from './services/food.service';
 import { GeolocationService } from './services/geolocation.service';
 
 
@@ -25,7 +26,7 @@ import { GeolocationService } from './services/geolocation.service';
       { path: 'results', component: SearchResultsComponent},
     ])],
     declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent ],
-    providers:    [ PlaceService, GeolocationService ],
+    providers:    [ PlaceService, FoodService,GeolocationService ],
     bootstrap:    [ AppComponent ]
   })
   export class AppModule { }

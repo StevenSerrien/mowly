@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { URLSearchParams } from '@angular/http';
 import { Place } from '../models/place';
 import { PlaceService } from '../services/place.service';
+import { GeolocationService } from '../services/geolocation.service';
+
 import { Router, NavigationExtras }  from '@angular/router';
 
 
@@ -14,14 +16,14 @@ export class SearchComponent {
   places: Place[];
 
   //Constructor for PlaceService
-  constructor(private placeService: PlaceService, private router: Router) { }
+  constructor(private placeService: PlaceService, private router: Router, private geolocationService: GeolocationService) { }
 
 
 
   ngOnInit() {
     this.placeService.sGetAllPlaces()
     .subscribe(data => this.places = data);
-
+    this.geolocationService.getCurrentPosition();
 
   }
 

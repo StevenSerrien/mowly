@@ -478,3 +478,8 @@ csmall2 {
 .navbar {
 	margin-bottom: 0px !important;
 }
+
+.navbar a {
+	font-family: 'Varela Round', sans-serif;
+	color: #f65d59 !important;
+}

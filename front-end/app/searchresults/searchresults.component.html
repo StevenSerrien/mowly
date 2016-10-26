@@ -7,11 +7,12 @@
  				<div class="col-md-4 col-sm-12 placeresults ">
           <div>
  					<i class="fa fa-map-marker text-center"></i>
-          <h4>Places with names like '{{this.searchQuery}}'</h4>
-          <div *ngFor="let place of placesResults" class="text-left">
+          <h4>Check out the menucards for these places</h4>
+          <div *ngFor="let place of placesResults" class="text-center summing-up-block">
             <h2>{{place.name}}</h2>
             <p>{{place.streetname}} {{place.housenumber}}</p>
             <p>{{place.city}}, {{place.country}}</p>
+            <button class="btn btn-1 btn-1a">Menucard</button>
           </div>
           </div>
 
@@ -21,8 +22,8 @@
  				<div class="col-md-4 col-sm-12 foodresults">
           <div>
  					<i class="fa fa-cutlery"></i>
-          <h4>Foods with names like '{{this.searchQuery}}'</h4>
-          <div *ngFor="let food of foodsResults" class="text-left">
+          <h4>Foods like '{{this.searchQuery}}' can be found here</h4>
+          <div *ngFor="let food of foodsResults" class="text-center">
             <h4>{{food.name}}</h4>
             <p></p>
             <p>{{food.price | currency:'EUR':true:'1.2-2'}}, {{food.place.name}}</p>
@@ -33,8 +34,8 @@
  				<div class="col-md-4 col-sm-12 drinkresults">
           <div>
  					<i class="fa fa-beer"></i>
-          <h4>Drinks with names like '{{this.searchQuery}}'</h4>
-          <div *ngFor="let drink of drinksResults" class="text-left">
+          <h4>Drinks like '{{this.searchQuery}}' can be found here</h4>
+          <div *ngFor="let drink of drinksResults" class="text-center">
             <h4>{{drink.name}}</h4>
             <p></p>
             <p>{{drink.price | currency:'EUR':true:'1.2-2'}}, {{drink.place.name}}</p>

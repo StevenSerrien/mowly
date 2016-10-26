@@ -8,8 +8,9 @@
 	URL: http://alvarez.is
 
 ################################################################# */
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,900);
-@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+
+@import url('https://fonts.googleapis.com/css?family=Varela+Round|Work+Sans');
+
 
 
 /*	################################################################
@@ -25,19 +26,19 @@ body {
 	margin: 0;
 	height: 100%;
 	color: #384452;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Work Sans', sans-serif !important;
 	font-weight: 400;
 	}
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Varela Round', sans-serif !important;
 	font-weight: 700;
 }
 
 p {
 	padding: 0;
 	margin-bottom: 12px;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Work Sans', sans-serif;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 24px;

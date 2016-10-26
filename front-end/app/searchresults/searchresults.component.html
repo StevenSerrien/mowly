@@ -1,31 +1,37 @@
+<div class="body-searchresults">
 <div class="container searchresults">
  			<div class="row centered">
         <div class="col-lg-12 searchresultsgreet">
           <h1>This is what I found for you.</h1>
         </div>
  				<div class="col-md-4 col-sm-12 placeresults ">
+          <div>
  					<i class="fa fa-map-marker text-center"></i>
-          <h4>Places</h4>
+          <h4>Places with names like '{{this.placeName}}'</h4>
           <div *ngFor="let place of placesResults" class="text-left">
             <h2>{{place.name}}</h2>
             <p>{{place.streetname}} {{place.housenumber}}</p>
             <p>{{place.city}}, {{place.country}}</p>
           </div>
+          </div>
 
 
- 					<p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+
  				</div>
  				<div class="col-md-4 col-sm-12 foodresults">
+          <div>
  					<i class="fa fa-cutlery"></i>
- 					<h4>Foods</h4>
- 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
- 					<p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+
+
  				</div>
+      </div>
  				<div class="col-md-4 col-sm-12 drinkresults">
+          <div>
  					<i class="fa fa-beer"></i>
- 					<h4>Drinks</h4>
- 					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
- 					<p><br/><a href="#" class="btn btn-theme">More Info</a></p>
+
+
  				</div>
+      </div>
 	 		</div>
 	 	</div><!--container -->
+    </div>

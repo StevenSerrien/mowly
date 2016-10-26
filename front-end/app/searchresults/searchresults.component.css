@@ -2,7 +2,11 @@
 /* #f65d59 brandcolor */
 /* #bac3c3 letters on grey */
 
-
+.body-searchresults {
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgb(246, 246, 246);
+}
 
 .searchresultsgreet {
   color: #f65d59;
@@ -10,9 +14,17 @@
   margin-top: 50px;
 }
 
-
-
 .searchresults i.fa {
   font-size: 2.5em;
   color: #f65d59;
+}
+
+.placeresults, .foodresults, .drinkresults {
+
+}
+
+.placeresults div, .foodresults div, .drinkresults div {
+  border-radius: 15px;
+  background-color: white;
+  padding: 10px;
 }

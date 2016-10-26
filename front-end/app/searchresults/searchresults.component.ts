@@ -16,7 +16,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class SearchResultsComponent {
   placesResults: Place[];
   paramsSub: any;
-  name: string;
+  placeName: any;
 
   //Constructor for PlaceService
   constructor(private placeService: PlaceService, private activatedRoute: ActivatedRoute, private router: Router) { }
@@ -33,6 +33,7 @@ export class SearchResultsComponent {
     // console.log(this.activatedRoute.queryParams['query']);
     this.activatedRoute.queryParams.forEach((params: Params) => {
        let name = params['query'];
+       this.placeName = params['query'];
        console.log(name);
        this.getPlaceByName(name);
     });

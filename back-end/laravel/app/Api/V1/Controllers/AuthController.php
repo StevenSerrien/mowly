@@ -33,7 +33,7 @@ class AuthController extends Controller
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return $this->response->errorUnauthorized();
+                return response()->json('{"token": "0"}',200);
             }
         } catch (JWTException $e) {
             return $this->response->error('could_not_create_token', 500);
@@ -66,7 +66,7 @@ class AuthController extends Controller
         if($hasToReleaseToken) {
             return $this->login($request);
         }
-        
+
         return $this->response->created();
     }
 
@@ -107,7 +107,7 @@ class AuthController extends Controller
         if($validator->fails()) {
             throw new ValidationHttpException($validator->errors()->all());
         }
-        
+
         $response = Password::reset($credentials, function ($user, $password) {
             $user->password = $password;
             $user->save();

@@ -17,6 +17,10 @@ import { FoodService } from './services/food.service';
 import { DrinkService } from './services/drink.service';
 import { GeolocationService } from './services/geolocation.service';
 
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './services/authentication.service';
+
+
 
 
 @NgModule({
@@ -25,9 +29,10 @@ import { GeolocationService } from './services/geolocation.service';
       { path: '', component: HomeComponent},
       { path: 'business', component: BusinessComponent},
       { path: 'results', component: SearchResultsComponent},
+      { path: 'login', component: LoginComponent},
     ])],
-    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent ],
-    providers:    [ PlaceService, FoodService, DrinkService, GeolocationService ],
+    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent ],
+    providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService ],
     bootstrap:    [ AppComponent ]
   })
   export class AppModule { }

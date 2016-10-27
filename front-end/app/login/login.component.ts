@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { JwtHelper } from 'angular2-jwt';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Component({
   //moduleId: module.id,
@@ -14,6 +16,7 @@ export class LoginComponent {
   loading = false;
   token: string;
   errorMessage: string;
+  jwtHelper: JwtHelper = new JwtHelper();
 
   constructor(
     private router: Router,
@@ -53,6 +56,14 @@ export class LoginComponent {
           this.token = this.authenticationService.token;
           // this.router.navigate(['/']);
           this.loading = false;
+
+          var token = localStorage.getItem('id_token');
+          console.log(
+            this.jwtHelper.decodeToken(token),
+            this.jwtHelper.getTokenExpirationDate(token),
+            this.jwtHelper.isTokenExpired(token)
+          );
+
         } else {
           // login failed
           this.errorMessage = 'Username or password is incorrect';

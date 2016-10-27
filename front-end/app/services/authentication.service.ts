@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import {AppSettings} from '../appSettings';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/toPromise';
+import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthenticationService {
@@ -38,7 +39,7 @@ export class AuthenticationService {
         this.token = token;
 
         // store username and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('jwt_token', token);
+        localStorage.setItem('id_token', token);
 
         // return true to indicate successful login
         return true;
@@ -46,6 +47,10 @@ export class AuthenticationService {
       }
     });
   }
+
+  loggedIn() {
+  return tokenNotExpired();
+}
 
   // private handleError (error: Response | any) {
   //   // In a real world app, we might use a remote logging infrastructure

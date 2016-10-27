@@ -1,0 +1,16 @@
+<div class="col-lg-6 col-lg-offset-3">
+    <h2>{{place?.name}}</h2>
+
+<h3>Food</h3>
+    <div *ngFor="let food of place?.foods" class="text-center summing-up-block">
+      <h2>{{food.name}}</h2>
+      <p>{{food.description}}</p>
+      <p>{{food.price}} €</p>
+    </div>
+    <h3>Drink</h3>
+    <div *ngFor="let drink of place?.drinks" class="text-center summing-up-block">
+      <h2>{{drink.name}}</h2>
+      <p>{{drink.description}}</p>
+      <p>{{drink.price}} €</p>
+    </div>
+</div>

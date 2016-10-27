@@ -19,4 +19,10 @@ export class PlaceService {
       }).map(response => <Place[]>response.json().places);
   }
 
+    sGetPlace(id) {
+        return this.http.get(`${AppSettings.API_ENDPOINT}/places/`+id).map(response => <Place>response.json().place);
+    }
+
+
+
 }

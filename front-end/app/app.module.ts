@@ -19,6 +19,7 @@ import { DrinkService } from './services/drink.service';
 import { GeolocationService } from './services/geolocation.service';
 
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './services/authentication.service';
 
 
@@ -31,8 +32,9 @@ import { AuthenticationService } from './services/authentication.service';
       { path: 'business', component: BusinessComponent},
       { path: 'results', component: SearchResultsComponent},
       { path: 'login', component: LoginComponent},
+      { path: 'register', component: RegisterComponent},
     ])],
-    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent ],
+    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent ],
     providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS],
     bootstrap:    [ AppComponent ]
   })

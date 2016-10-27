@@ -27,26 +27,26 @@ export class LoginComponent {
       // this.login('edward@edward.edward', '123456789');
     }
 
-    //the promise way
-
-    login(email: string, password: string): void {
-      email = email.trim();
-      if (!email) { return; }
-      this.authenticationService.login(email, password)
-      .then(data => {
-        if(!data){console.log('tis kapot');}
-        else {
-          this.token = data['token'];
-          console.log(data);
-        }
-      });
-    }
+    // //the promise way
+    //
+    // login(email: string, password: string): void {
+    //   email = email.trim();
+    //   if (!email) { return; }
+    //   this.authenticationService.login(email, password)
+    //   .then(data => {
+    //     if(!data){console.log('tis kapot');}
+    //     else {
+    //       this.token = data['token'];
+    //       console.log(data);
+    //     }
+    //   });
+    // }
 
     //the observer way
 
-    login2(email: string, password: string){
+    login(email: string, password: string){
       this.loading = true;
-      this.authenticationService.login2(email, password)
+      this.authenticationService.login(email, password)
       .subscribe(result => {
         if (result === true) {
           // login successful

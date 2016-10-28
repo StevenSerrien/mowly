@@ -4,13 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import {AppSettings} from '../appSettings';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class AuthenticationService {
   constructor(private http: Http) { }
-  private headers = new Headers({'Content-Type': 'application/json'});
+  // private headers = new Headers({'Content-Type': 'application/json'});
   token: string;
+  errormessage: string;
 
   // //the promise way
   // login(gemail: string, gpassword: string): Promise<string> {
@@ -23,28 +26,23 @@ export class AuthenticationService {
   // }
 
   //the observer way
-  register(gname: string, gemail: string, gpassword): Observable<boolean> {
+  register(gname: string, gemail: string, gpassword: string): Observable<boolean> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(`${AppSettings.API_ENDPOINT}/auth/login`, JSON.stringify({email: gemail, password: gpassword}), options)
+    return this.http.post(`${AppSettings.API_ENDPOINT}/auth/signup`, JSON.stringify({email: gemail, password: gpassword, name: gname}), options)
     .map((response: Response) => {
-      // login successful if there's a jwt token in the response
-      let token = response.json() && response.json().token;
-      if (token == 0) {
-        // return false to indicate failed login
-        return false;
-      } else {
-        // // set token property
+      // register successful if there's a jwt token in the response
+      if (response.json().hasOwnProperty("token")) {
+        let token = response.json().token;
         this.token = token;
-
-        // store username and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('id_token', token);
-
-        // return true to indicate successful login
+        //return true that register was succesfull
         return true;
-
+      } else {
+        return false;
       }
-    });
+    })
+    .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
 
@@ -55,7 +53,7 @@ export class AuthenticationService {
     return this.http.post(`${AppSettings.API_ENDPOINT}/auth/login`, JSON.stringify({email: gemail, password: gpassword}), options)
     .map((response: Response) => {
       // login successful if there's a jwt token in the response
-      let token = response.json() && response.json().token;
+      let token = response.json().token;
       if (token == 0) {
         // return false to indicate failed login
         return false;
@@ -74,8 +72,8 @@ export class AuthenticationService {
   }
 
   loggedIn() {
-  return tokenNotExpired();
-}
+    return tokenNotExpired();
+  }
 
   // private handleError (error: Response | any) {
   //   // In a real world app, we might use a remote logging infrastructure

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <h4 class='text-center register-subtitle'>{{greetmessage}}</h4>
+    <h5 class='text-center register-subtitle'>{{stepnumber}}</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="inner register">
+          <!-- Form Area -->
+          <div class="register-form">
+              <!-- Form -->
+              <form id="register" method="post" action="#">
+                  <!-- Left Inputs -->
+                  <div class="col-xs-12 wow animated slideInLeft">
+                    <!-- Message -->
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="business" id="businessname" required="required" class="form" placeholder="Name of your place" />
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="streetname" id="streetname" required="required" class="form" placeholder="Streetname" />
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="housenumber" id="housenumber" required="required" class="form" placeholder="Housenumber" />
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="city" id="city" required="required" class="form" placeholder="City" />
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="country" id="country" required="required" class="form" placeholder="Country" />
+                    </div>
+
+
+                  </div><!-- End Right Inputs -->
+
+                  <!-- Bottom Submit -->
+                  <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
+                      <!-- Send Button -->
+                      <button type="submit" id="submit" name="submit" (click)="goToNextStepMenu()" class="form-btn semibold">Register</button>
+                  </div><!-- End Bottom Submit -->
+                  <!-- Clear -->
+                  <div class="clear"></div>
+              </form>
+
+
+
+          </div><!-- End Contact Form Area -->
+      </div><!-- End Inner -->
+
+</div>

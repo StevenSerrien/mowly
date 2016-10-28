@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-sm-12 col-md-12">
-    <h4 class='text-center register-subtitle'>Your personal account</h4>
+    <h4 class='text-center register-subtitle'>{{greetmessage}}</h4>
+    <h5 class='text-center register-subtitle'>{{stepnumber}}</h5>
   </div>
 </div>
 <div class="row">
@@ -22,7 +23,7 @@
                   <!-- Bottom Submit -->
                   <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
                       <!-- Send Button -->
-                      <button type="submit" id="submit" name="submit" class="form-btn semibold">Register</button>
+                      <button type="submit" id="submit" name="submit" (click)="goToNextStepBusiness()" class="form-btn semibold">Register</button>
                   </div><!-- End Bottom Submit -->
                   <!-- Clear -->
                   <div class="clear"></div>

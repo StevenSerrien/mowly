@@ -12,7 +12,8 @@ import { tokenNotExpired } from 'angular2-jwt';
 })
 
 export class RegisterComponent {
-
+  greetmessage = "Your personal account";
+  stepnumber = "Step 1";
   model: any = {};
   loading = false;
   token: string;
@@ -25,5 +26,15 @@ export class RegisterComponent {
     ngOnInit() {
 
     }
+
+    goToNextStepBusiness() {
+      // Set our navigation extras object
+      // that contains our global query params and fragment
+
+      // Navigate to the login page with extras
+      this.router.navigate(['register/step-2']);
+      return false;
+    }
+
 
   }

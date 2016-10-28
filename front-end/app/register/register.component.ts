@@ -13,6 +13,11 @@ import { tokenNotExpired } from 'angular2-jwt';
 
 export class RegisterComponent {
 
+  model: any = {};
+  loading = false;
+  token: string;
+  errorMessage: string;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService) { }

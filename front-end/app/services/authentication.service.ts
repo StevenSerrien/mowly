@@ -23,6 +23,31 @@ export class AuthenticationService {
   // }
 
   //the observer way
+  register(gname: string, gemail: string, gpassword): Observable<boolean> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(`${AppSettings.API_ENDPOINT}/auth/login`, JSON.stringify({email: gemail, password: gpassword}), options)
+    .map((response: Response) => {
+      // login successful if there's a jwt token in the response
+      let token = response.json() && response.json().token;
+      if (token == 0) {
+        // return false to indicate failed login
+        return false;
+      } else {
+        // // set token property
+        this.token = token;
+
+        // store username and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('id_token', token);
+
+        // return true to indicate successful login
+        return true;
+
+      }
+    });
+  }
+
+
   login (gemail: string, gpassword: string): Observable<boolean> {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });

@@ -24,7 +24,7 @@ import { RegisterComponent } from './register/register.component';
 import { PlaceComponent } from './place/place.component';
 import { AuthenticationService } from './services/authentication.service';
 
-
+import { RegisterIndexComponent } from './register/register-index.component';
 
 
 @NgModule({
@@ -34,10 +34,16 @@ import { AuthenticationService } from './services/authentication.service';
       { path: 'business', component: BusinessComponent},
       { path: 'results', component: SearchResultsComponent},
       { path: 'login', component: LoginComponent},
-      { path: 'register', component: RegisterComponent},
+      {
+        path: 'register',
+        component: RegisterIndexComponent,
+        children: [
+        { path: '', component: RegisterComponent },
+        { path: 'step-1', component: RegisterComponent }
+      ]},
       { path: 'place/:id', component: PlaceComponent},
     ])],
-    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, PlaceComponent ],
+    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, PlaceComponent ],
     providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS],
     bootstrap:    [ AppComponent ]
   })

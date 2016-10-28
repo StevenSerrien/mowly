@@ -4,3 +4,104 @@
     <h5 class='text-center register-subtitle'>{{stepnumber}}</h5>
   </div>
 </div>
+<div class="row">
+  <div class="inner register">
+          <!-- Form Area -->
+          <div class="register-form">
+            <!-- Form -->
+
+
+            <form [formGroup]="foodForm" class="col-xs-12 col-md-6" novalidate >
+              <h2 class="register-subtitle text-center">Your foods</h2>
+              <div formArrayName="foods"  class=" wow animated slideInLeft">
+                <div *ngFor="let food of foodForm.controls.foods.controls; let i=index">
+                  <div class="foodcard">
+                    <!-- <span class='dishnumber'>Your dish nr: {{i + 1}}</span> -->
+                    <span *ngIf="foodForm.controls.foods.controls.length > 1"
+                      (click)="removeFood(i)">
+                    </span>
+                  <div class='foodinputlist'>
+                  <div [formGroupName]="i" class="foodinputs">
+                    <div class="col-xs-8">
+                      <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" formControlName="name" />
+
+                      <!--display error message if street is not valid-->
+                      <!-- <small [hidden]="foodForm.controls.foods.controls[i].controls.foods.valid">
+                        Name is required.
+                      </small> -->
+                    </div>
+                    <div class="col-xs-4">
+                      <input type="text" name="price" id="price" required="required" class="form" placeholder="price" formControlName="price" />
+                    </div>
+                    <div class="col-xs-12">
+                      <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />
+                    </div>
+
+
+
+
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
+                    <!-- Send Button -->
+                    <button id="addfoodinput-button" name="addfoodinput-button" (click)="addFoodInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div><!-- End Bottom Submit -->
+              </div>
+              <!-- <button type="submit" [disabled]="!foodForm.valid">Submit</button> -->
+            </form>
+            <form [formGroup]="drinkForm" class="col-xs-12 col-md-6" novalidate >
+              <h2 class="register-subtitle text-center">Your drinks</h2>
+              <div formArrayName="drinks"  class=" wow animated slideInRight">
+                <div *ngFor="let drink of drinkForm.controls.drinks.controls; let i=index">
+                  <div class="drinkcard">
+                    <!-- <span class='dishnumber'>Your dish nr: {{i + 1}}</span> -->
+                    <span *ngIf="drinkForm.controls.drinks.controls.length > 1"
+                      (click)="removeDrink(i)">
+                    </span>
+                  <div class='drinkinputlist'>
+                  <div [formGroupName]="i" class="drinkinputs">
+                    <div class="col-xs-8">
+                      <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" formControlName="name" />
+
+                      <!--display error message if street is not valid-->
+                      <!-- <small [hidden]="foodForm.controls.foods.controls[i].controls.foods.valid">
+                        Name is required.
+                      </small> -->
+                    </div>
+                    <div class="col-xs-4">
+                      <input type="text" name="price" id="price" required="required" class="form" placeholder="price" formControlName="price" />
+                    </div>
+                    <div class="col-xs-12">
+                      <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />
+                    </div>
+
+
+
+
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
+                    <!-- Send Button -->
+                    <button id="adddrinkinput-button" name="adddrinkinput-button" (click)="addDrinkInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div><!-- End Bottom Submit -->
+              </div>
+              <!-- <button type="submit" [disabled]="!foodForm.valid">Submit</button> -->
+            </form>
+            <!-- <h4 class='register-subtitle'>Drinks</h4>
+            <form [formGroup]="drinkForm" novalidate (ngSubmit)="save(myForm)">
+              <div formArrayName="drinks">
+              </div>
+              <button type="submit" [disabled]="!drinkForm.valid">Submit</button>
+            </form> -->
+
+
+
+
+          </div><!-- End Contact Form Area -->
+      </div><!-- End Inner -->
+
+</div>

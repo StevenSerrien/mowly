@@ -148,3 +148,29 @@ input {
    position: relative;
    z-index: 9999;
 }
+
+.dishnumber {
+  font-family: 'Varela Round', sans-serif;
+  color: grey;
+}
+
+.foodinputs div{
+  padding-left: 0px !important;
+}
+
+.foodinputs {
+  background-color: red;
+}
+
+.foodinputlist {
+  background-color: red !important;
+}
+
+#addfoodinput-button, #adddrinkinput-button {
+  border-radius: 100%;
+  width: 45px;
+}
+
+.foodcard {
+  background-color: red;
+}

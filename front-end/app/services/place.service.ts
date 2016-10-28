@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {AppSettings} from '../appSettings';
 import { Place } from '../models/place';
 import 'rxjs/add/operator/map';
@@ -23,6 +23,8 @@ export class PlaceService {
         return this.http.get(`${AppSettings.API_ENDPOINT}/places/`+id).map(response => <Place>response.json().place);
     }
 
-
-
+    sGetGeoAndAdress(address) {
+        return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC6szXLklZiZ5VxJHSd6vxBJHVMuzqWW2o&address='+address)
+        .map(response => response.json());
+    }
 }

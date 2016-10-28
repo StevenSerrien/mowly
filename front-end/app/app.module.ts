@@ -6,6 +6,8 @@ import { HomeComponent }   from './home.component';
 import { SearchComponent } from './search/search.component';
 import { BusinessComponent } from './business/business.component';
 import { SearchResultsComponent } from './searchresults/searchresults.component';
+import { CrudPlaceComponent } from './crudplace/crudplace.component';
+
 
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
@@ -45,8 +47,9 @@ import { RegisterMenuComponent } from './register/register-menu.component';
         { path: 'step-3', component: RegisterMenuComponent },
       ]},
       { path: 'place/:id', component: PlaceComponent},
+      { path: 'crudplace', component: CrudPlaceComponent},
     ])],
-    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, RegisterBusinessComponent, RegisterMenuComponent, PlaceComponent ],
+    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, RegisterBusinessComponent, RegisterMenuComponent, PlaceComponent, CrudPlaceComponent ],
     providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS],
     bootstrap:    [ AppComponent ]
   })

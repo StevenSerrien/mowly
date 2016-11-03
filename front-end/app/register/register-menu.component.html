@@ -11,15 +11,16 @@
             <!-- Form -->
 
 
-            <form [formGroup]="foodForm" class="col-xs-12 col-md-6" novalidate >
+            <form [formGroup]="foodForm" class="col-xs-12 col-md-6" (ngSubmit)="save(foodForm)" novalidate >
               <h2 class="register-subtitle text-center">Your foods</h2>
               <div formArrayName="foods"  class=" wow animated slideInLeft">
                 <div *ngFor="let food of foodForm.controls.foods.controls; let i=index">
                   <div class="foodcard">
                     <!-- <span class='dishnumber'>Your dish nr: {{i + 1}}</span> -->
-                    <span *ngIf="foodForm.controls.foods.controls.length > 1"
-                      (click)="removeFood(i)">
-                    </span>
+                    <i class='fa fa-times removeItem' *ngIf="foodForm.controls.foods.controls.length > 1"
+                      (click)="removeFood(i)" aria-hidden="true">
+
+                    </i>
                   <div class='foodinputlist'>
                   <div [formGroupName]="i" class="foodinputs">
                     <div class="col-xs-8">
@@ -46,12 +47,14 @@
                 </div>
                 <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
                     <!-- Send Button -->
-                    <button id="addfoodinput-button" name="addfoodinput-button" (click)="addFoodInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <button [disabled]="!foodForm.valid" id="addfoodinput-button" name="addfoodinput-button" (click)="addFoodInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div><!-- End Bottom Submit -->
               </div>
-              <!-- <button type="submit" [disabled]="!foodForm.valid">Submit</button> -->
+            <!-- <button type="submit" [disabled]="!foodForm.valid">Save my foods!</button> -->
             </form>
-            <form [formGroup]="drinkForm" class="col-xs-12 col-md-6" novalidate >
+
+
+            <form [formGroup]="drinkForm" class="col-xs-12 col-md-6" (ngSubmit)="save(drinkForm)" novalidate >
               <h2 class="register-subtitle text-center">Your drinks</h2>
               <div formArrayName="drinks"  class=" wow animated slideInRight">
                 <div *ngFor="let drink of drinkForm.controls.drinks.controls; let i=index">
@@ -86,10 +89,10 @@
                 </div>
                 <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
                     <!-- Send Button -->
-                    <button id="adddrinkinput-button" name="adddrinkinput-button" (click)="addDrinkInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    <button  [disabled]="!drinkForm.valid"id="adddrinkinput-button" name="adddrinkinput-button" (click)="addDrinkInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div><!-- End Bottom Submit -->
               </div>
-              <!-- <button type="submit" [disabled]="!foodForm.valid">Submit</button> -->
+              <!-- <button type="submit" [disabled]="!drinkForm.valid">Save my drinks!</button> -->
             </form>
             <!-- <h4 class='register-subtitle'>Drinks</h4>
             <form [formGroup]="drinkForm" novalidate (ngSubmit)="save(myForm)">

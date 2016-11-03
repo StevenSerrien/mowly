@@ -172,5 +172,19 @@ input {
 }
 
 .foodcard {
-  background-color: red;
+
+}
+
+
+button[disabled]{
+  opacity: 0.65 !important;
+  cursor: not-allowed !important;
+}
+
+i.removeItem {
+  font-size: 2
+  position: relative !importants;
+  left: -8px;
+  
+  color: #e2524e;
 }

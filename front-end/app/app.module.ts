@@ -14,7 +14,7 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PlaceService } from './services/place.service';
 import { FoodService } from './services/food.service';
@@ -31,8 +31,10 @@ import { RegisterBusinessComponent } from './register/register-business.componen
 import { RegisterMenuComponent } from './register/register-menu.component';
 
 
+
+
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, FormsModule,
+  imports:      [ BrowserModule, HttpModule, FormsModule, ReactiveFormsModule,
     RouterModule.forRoot ([
       { path: '', component: HomeComponent},
       { path: 'business', component: BusinessComponent},

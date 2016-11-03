@@ -24,14 +24,14 @@ class DrinkController extends Controller
 
     //check if logged in user is owner of place before adding food.
     if ($place->user_id === $this->currentUser()->id) {
-      //Creates new databaserecord in foodtable with info from request
+      //Creates new databaserecord in drinktable with info from request
       $drink = new Drink;
       $drink->name = $request->get('name');
       $drink->description = $request->get('description');
       $drink->price = $request->get('price');
 
       if($place->drinks()->save($drink))
-      //Returns foodobject on completion
+      //Returns drinkobject on completion
       return $drink;
       else
       return $this->response->error('could_not_create_drink', 500);

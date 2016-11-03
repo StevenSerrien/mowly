@@ -13,17 +13,17 @@
                   <!-- Left Inputs -->
                   <div class="col-xs-12 col-md-6 col-md-offset-3 animated slideInLeft" >
                       <!-- Name -->
-                      <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" />
+                      <input type="text" [(ngModel)]="name" name="name" id="name" required="required" class="form" placeholder="Name" />
                       <!-- Email -->
-                      <input type="email" name="mail" id="mail" required="required" class="form" placeholder="Email" />
+                      <input type="email" [(ngModel)]="email" name="mail" id="mail" required="required" class="form" placeholder="Email" />
                       <!-- Subject -->
-                      <input type="password" name="password" id="password" required="required" class="form" placeholder="Password" />
+                      <input type="password" [(ngModel)]="password" name="password" id="password" required="required" class="form" placeholder="Password" />
                   </div><!-- End Left Inputs -->
 
                   <!-- Bottom Submit -->
                   <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
                       <!-- Send Button -->
-                      <button type="submit" id="submit" name="submit" (click)="goToNextStepBusiness()" class="form-btn semibold">Register</button>
+                      <button type="submit" id="submit" name="submit" (click)="register()" class="form-btn semibold">Register</button>
                   </div><!-- End Bottom Submit -->
                   <!-- Clear -->
                   <div class="clear"></div>

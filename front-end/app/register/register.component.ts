@@ -14,10 +14,12 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class RegisterComponent {
   greetmessage = "Your personal account";
   stepnumber = "Step 1";
-  model: any = {};
   loading = false;
   token: string;
   errorMessage: string;
+  email: string;
+  password: string;
+  name: string;
 
   constructor(
     private router: Router,
@@ -36,5 +38,26 @@ export class RegisterComponent {
       return false;
     }
 
+    register(){
+      this.loading = true;
+      this.authenticationService.register(this.name, this.email, this.password)
+      .subscribe(result => {
+        if (result === true) {
+          // register successful
+          this.token = this.authenticationService.token;
 
+          this.loading = false;
+          this.router.navigate(['register/step-2']);
+
+        }
+      },
+      err => {
+
+          // register failed
+          this.errorMessage = err;
+          alert(this.errorMessage);
+          this.loading = false;
+
+      });
+    }
   }

@@ -35,7 +35,7 @@ class PlaceController extends Controller
     $place->longitude = $request->get('longitude');
 
     if($this->currentUser()->places()->save($place))
-    return $this->response->created();
+    return $place;
     else
     return $this->response->error('could_not_create_place', 500);
   }

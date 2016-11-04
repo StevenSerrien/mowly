@@ -32,7 +32,7 @@
                       </small> -->
                     </div>
                     <div class="col-xs-4">
-                      <input type="text" name="price" id="price" required="required" class="form" placeholder="price" formControlName="price" />
+                      <input type="number" name="price" id="price" required="required" class="form" placeholder="price (e.g. 19.20)" formControlName="price" />
                     </div>
                     <div class="col-xs-12">
                       <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />
@@ -49,6 +49,11 @@
                     <!-- Send Button -->
                     <button [disabled]="!foodForm.valid" id="addfoodinput-button" name="addfoodinput-button" (click)="addFoodInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div><!-- End Bottom Submit -->
+              </div>
+              <div class="margin-20">
+                <div>myForm details:-</div>
+                <pre>Is myForm valid?: <br>{{foodForm.valid | json}}</pre>
+                <pre>form value: <br>{{foodForm.value | json}}</pre>
               </div>
             <!-- <button type="submit" [disabled]="!foodForm.valid">Save my foods!</button> -->
             </form>

@@ -158,12 +158,9 @@ input {
   padding-left: 0px !important;
 }
 
-.foodinputs {
-  background-color: red;
-}
 
 .foodinputlist {
-  background-color: red !important;
+
 }
 
 #addfoodinput-button, #adddrinkinput-button {
@@ -173,6 +170,11 @@ input {
 
 .foodcard {
 
+}
+
+/* Currency label before inputs*/
+span.input-group-addon {
+  height: 60% !important;
 }
 
 
@@ -185,6 +187,6 @@ i.removeItem {
   font-size: 2
   position: relative !importants;
   left: -8px;
-  
+
   color: #e2524e;
 }

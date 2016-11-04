@@ -37,10 +37,6 @@
                     <div class="col-xs-12">
                       <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />
                     </div>
-
-
-
-
                   </div>
                   </div>
                   </div>
@@ -57,8 +53,6 @@
               </div>
             <!-- <button type="submit" [disabled]="!foodForm.valid">Save my foods!</button> -->
             </form>
-
-
             <form [formGroup]="drinkForm" class="col-xs-12 col-md-6" (ngSubmit)="save(drinkForm)" novalidate >
               <h2 class="register-subtitle text-center">Your drinks</h2>
               <div formArrayName="drinks"  class=" wow animated slideInRight">
@@ -84,10 +78,6 @@
                     <div class="col-xs-12">
                       <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />
                     </div>
-
-
-
-
                   </div>
                   </div>
                   </div>
@@ -99,6 +89,10 @@
               </div>
               <!-- <button type="submit" [disabled]="!drinkForm.valid">Save my drinks!</button> -->
             </form>
+            <div class="relative fullwidth col-xs-12 col-md-12 saveMenuButton">
+                <!-- Send Button -->
+                <button [disabled]="!drinkForm.valid || !foodForm.valid" type="submit" id="submit" name="submit" (click)="saveMenu()" class="form-btn semibold">Save your menu</button>
+            </div><!-- End Bottom Submit -->
             <!-- <h4 class='register-subtitle'>Drinks</h4>
             <form [formGroup]="drinkForm" novalidate (ngSubmit)="save(myForm)">
               <div formArrayName="drinks">

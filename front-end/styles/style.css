@@ -21,14 +21,20 @@
 		padding: 0px;
 	}
 
+
 body {
 	background: #ffffff;
 	margin: 0;
-	height: 100%;
+
 	color: #384452;
 	font-family: 'Work Sans', sans-serif !important;
 	font-weight: 400;
-	}
+	/* Margin bottom by footer height */
+
+}
+
+
+
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Varela Round', sans-serif !important;
@@ -480,6 +486,8 @@ csmall2 {
 }
 
 .navbar a {
-	font-family: 'Varela Round', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	color: #f65d59 !important;
+	letter-spacing: 0.2em;
+	font-weight: 400 !important;
 }

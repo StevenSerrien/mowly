@@ -486,6 +486,8 @@ csmall2 {
 }
 
 .navbar a {
-	font-family: 'Varela Round', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	color: #f65d59 !important;
+	letter-spacing: 0.2em;
+	font-weight: 400 !important;
 }

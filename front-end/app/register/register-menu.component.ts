@@ -5,6 +5,9 @@ import { JwtHelper } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
 import { FoodService }  from "../services/food.service";
 import { Food } from '../models/food';
+import { UserService } from '../services/user.service';
+import { Place } from '../models/place';
+
 
 
 //REACTIVE FORMS
@@ -31,10 +34,13 @@ export class RegisterMenuComponent {
   loading = false;
   token: string;
   errorMessage: string;
+  place_id: number;
+  place: Place;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
+    private userService: UserService,
     private _fb: FormBuilder,
     private foodService: FoodService) { }
 
@@ -51,6 +57,30 @@ export class RegisterMenuComponent {
         ])
       });
 
+
+      this.userService.sGetLoggedInUserData()
+      .subscribe(user => {
+            //put fetched user data in local storage.
+            localStorage.setItem('user', JSON.stringify(user));
+            this.userService.userData();
+            //check if there are no places for this person
+            console.log('my girth is: ' + Object.keys(this.userService.user.places).length);
+            if (Object.keys(this.userService.user.places).length === 0) {
+              this.router.navigate(['register/step-2']);
+            }
+            if (Object.keys(this.userService.user.places).length === 1) {
+              this.place_id = this.userService.user.places[0].id;
+              this.place = this.userService.user.places[0];
+            }
+            else {
+              this.router.navigate(['/']);
+            }
+      },
+      err => {
+        // user fetch failed
+        this.errorMessage = err;
+        alert(this.errorMessage);
+      });
     }
 
     initFood() {

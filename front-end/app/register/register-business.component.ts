@@ -6,6 +6,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 import { PlaceService } from '../services/place.service';
 import { GeolocationService } from '../services/geolocation.service';
 import { Place } from '../models/place';
+import { UserService } from '../services/user.service';
 
 
 
@@ -37,10 +38,20 @@ export class RegisterBusinessComponent {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private placeService: PlaceService) { }
+    private placeService: PlaceService,
+    private userService: UserService) { }
 
     ngOnInit() {
 
+
+      //check if there are no places for this person
+      if (this.userService.userData()) {
+        if (Object.keys(this.userService.user.places).length === 0) {
+
+        } else {
+          this.router.navigate(['register/step-3']);
+        }
+      }
     }
 
     // goToNextStepMenu() {
@@ -55,7 +66,7 @@ export class RegisterBusinessComponent {
       .subscribe(data => this.mapData(data));
     }
 
-    //fill variabels from maps data api
+    //fill variables from maps data api
     mapData(data){
       if(data.status == 'OK'){
         this.latitude = data.results[0].geometry.location.lat;
@@ -76,18 +87,19 @@ export class RegisterBusinessComponent {
             break;
           }}
         }
-        else{alert('Unknown Adress, mowly says he is sorry but he will try again with another search query')}
+        else{alert('Unknown Address, Mowly says he is sorry but he will try again with another search query')}
       }
 
 
       addPlace(){
         this.loading = true;
         this.placeService.sAddPlace(this.name, this.streetname, this.housenumber, this.city, this.country, this.latitude, this.longitude)
-        .subscribe(place => { this.place = place
+        .subscribe(place => { this.place = place;
           if (place) {
 
             this.loading = false;
             this.router.navigate(['register/step-3']);
+
 
           }
         },

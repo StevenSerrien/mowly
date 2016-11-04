@@ -172,6 +172,10 @@ input {
 
 }
 
+.saveMenuButton {
+  margin-top: 30px !important;
+}
+
 /* Currency label before inputs*/
 span.input-group-addon {
   height: 60% !important;

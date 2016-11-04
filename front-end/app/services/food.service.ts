@@ -31,7 +31,7 @@ export class FoodService {
   sAddFood(name: string, description: string, price: number, place_id: number): Observable<Food> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.authHttp.post(`${AppSettings.API_ENDPOINT}/drink/store`,
+    return this.authHttp.post(`${AppSettings.API_ENDPOINT}/food/store`,
       JSON.stringify({name: name, description: description, price: price, place_id: place_id}), options)
     .map(response => <Food>response.json().food)
     .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));

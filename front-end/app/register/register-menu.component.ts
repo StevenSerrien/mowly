@@ -5,6 +5,8 @@ import { JwtHelper } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
 import { FoodService }  from "../services/food.service";
 import { Food } from '../models/food';
+import { DrinkService }  from "../services/drink.service";
+
 import { UserService } from '../services/user.service';
 import { Place } from '../models/place';
 
@@ -41,6 +43,7 @@ export class RegisterMenuComponent {
     private router: Router,
     private authenticationService: AuthenticationService,
     private userService: UserService,
+    private drinkService: DrinkService,
     private _fb: FormBuilder,
     private foodService: FoodService) { }
 
@@ -131,12 +134,15 @@ export class RegisterMenuComponent {
       this.loading = true;
       for (let food of this.foodForm.value.foods) {
         // console.log(food); // 1, "string", false
-        this.addFood(food.name, food.description, food.price, 3);
-      };
+        this.addFood(food.name, food.description, food.price, this.place_id);
+      }
       for (let drink of this.drinkForm.value.drinks) {
-        console.log(drink); // 1, "string", false
-      };
-      this.loading = false;
+        //console.log(drink); // 1, "string", false
+          this.addDrink(drink.name, drink.description, drink.price, this.place_id);
+      }
+
+        setTimeout(()=>{this.router.navigate(['place/' + this.place_id]); this.loading = false;}, 500);
+
     }
 
     addFood(name: string, description: string, price: number, place_id: number){
@@ -154,6 +160,22 @@ export class RegisterMenuComponent {
 
       });
     }
+
+  addDrink(name: string, description: string, price: number, place_id: number){
+    this.drinkService.sAddDrink(name, description, price, place_id)
+        .subscribe(drink => {
+              if (drink) {
+                console.log(drink.name + ' added!')
+              }
+            },
+            err => {
+
+              // drink added failed
+              this.errorMessage = err;
+              alert(this.errorMessage);
+
+            });
+  }
 
 
 

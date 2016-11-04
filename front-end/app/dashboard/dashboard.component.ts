@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { JwtHelper } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
+import { UserService } from '../services/user.service';
 
 @Component({
   //moduleId: module.id,
@@ -18,11 +19,15 @@ export class DashboardComponent {
   errorMessage: string;
   jwtHelper: JwtHelper = new JwtHelper();
 
+
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    private userservice: UserService) { }
 
     ngOnInit() {
+      
+
 
 
     }

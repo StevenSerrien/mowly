@@ -10,6 +10,7 @@
 ################################################################# */
 
 @import url('https://fonts.googleapis.com/css?family=Varela+Round|Work+Sans');
+@import url('https://fonts.googleapis.com/css?family=Asap');
 
 
 
@@ -486,8 +487,8 @@ csmall2 {
 }
 
 .navbar a {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Asap', sans-serif;
 	color: #f65d59 !important;
 	letter-spacing: 0.2em;
-	font-weight: 400 !important;
+	font-size: 1.0em !important;
 }

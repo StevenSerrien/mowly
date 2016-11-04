@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { JwtHelper } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
+import { FoodService }  from "../services/food.service";
+import { Food } from '../models/food';
+
 
 //REACTIVE FORMS
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
@@ -32,73 +35,96 @@ export class RegisterMenuComponent {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private _fb: FormBuilder) { }
+    private _fb: FormBuilder,
+    private foodService: FoodService) { }
 
     ngOnInit() {
       this.drinkForm = this._fb.group({
-            drinks: this._fb.array([
-            this.initDrink(),
-          ])
+        drinks: this._fb.array([
+          this.initDrink(),
+        ])
       });
       this.foodForm = this._fb.group({
 
-            foods: this._fb.array([
-                this.initFood(),
-              ])
-        });
+        foods: this._fb.array([
+          this.initFood(),
+        ])
+      });
 
     }
 
     initFood() {
-        // initialize our address
-        return this._fb.group({
-            name: ['', [Validators.required, Validators.minLength(3)]],
-            description: ['', [Validators.required, Validators.minLength(5)]],
-            price: ['', Validators.required]
-        });
+      // initialize our address
+      return this._fb.group({
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        description: ['', [Validators.required, Validators.minLength(5)]],
+        price: ['', Validators.required]
+      });
     }
 
     initDrink() {
-        // initialize our address
-        return this._fb.group({
-            name: ['', [Validators.required, Validators.minLength(3)]],
-            description: ['', [Validators.required, Validators.minLength(5)]],
-            price: ['', Validators.required]
-        });
+      // initialize our address
+      return this._fb.group({
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        description: ['', [Validators.required, Validators.minLength(5)]],
+        price: ['', Validators.required]
+      });
     }
 
     addFoodInput() {
-    // add address to the list
-    const control = <FormArray>this.foodForm.controls['foods'];
-    control.push(this.initFood());
+      // add address to the list
+      const control = <FormArray>this.foodForm.controls['foods'];
+      control.push(this.initFood());
     }
 
     removeFood(i: number) {
-    // remove address from the list
-    const control = <FormArray>this.foodForm.controls['foods'];
-    control.removeAt(i);
+      // remove address from the list
+      const control = <FormArray>this.foodForm.controls['foods'];
+      control.removeAt(i);
     }
 
     addDrinkInput() {
-    // add address to the list
-    const control = <FormArray>this.drinkForm.controls['drinks'];
-    control.push(this.initDrink());
+      // add address to the list
+      const control = <FormArray>this.drinkForm.controls['drinks'];
+      control.push(this.initDrink());
     }
 
     removeDrink(i: number) {
-    // remove address from the list
-    const control = <FormArray>this.drinkForm.controls['drinks'];
-    control.removeAt(i);
+      // remove address from the list
+      const control = <FormArray>this.drinkForm.controls['drinks'];
+      control.removeAt(i);
     }
 
-    saveMenu() {}
 
-    saveFoods(foodName: string, foodDescription: string, foodPrice: number){
-
+    // Save menu logic
+    saveMenu() {
+      this.loading = true;
+      for (let food of this.foodForm.value.foods) {
+        // console.log(food); // 1, "string", false
+        this.addFood(food.name, food.description, food.price, 3);
+      };
+      for (let drink of this.drinkForm.value.drinks) {
+        console.log(drink); // 1, "string", false
+      };
+      this.loading = false;
     }
 
-    saveDrinks(foodName: string, foodDescription: string, foodPrice: number){
+    addFood(name: string, description: string, price: number, place_id: number){
+      this.foodService.sAddFood(name, description, price, place_id)
+      .subscribe(food => {
+        if (food) {
+          console.log(food.name + ' added!')
+        }
+      },
+      err => {
 
+        // food added failed
+        this.errorMessage = err;
+        alert(this.errorMessage);
+
+      });
     }
+
+
 
   }

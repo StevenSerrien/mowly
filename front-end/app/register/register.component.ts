@@ -26,17 +26,19 @@ export class RegisterComponent {
     private authenticationService: AuthenticationService) { }
 
     ngOnInit() {
-
+      if (this.authenticationService.loggedIn()) {
+          this.router.navigate(['register/step-2']);
+      } 
     }
 
-    goToNextStepBusiness() {
-      // Set our navigation extras object
-      // that contains our global query params and fragment
-
-      // Navigate to the login page with extras
-      this.router.navigate(['register/step-2']);
-      return false;
-    }
+    // goToNextStepBusiness() {
+    //   // Set our navigation extras object
+    //   // that contains our global query params and fragment
+    //
+    //   // Navigate to the login page with extras
+    //   this.router.navigate(['register/step-2']);
+    //   return false;
+    // }
 
     register(){
       this.loading = true;

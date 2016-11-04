@@ -23,6 +23,8 @@ $api->version('v1', function ($api) {
 		$api->post('place/store', 'App\Api\V1\Controllers\PlaceController@store');
 		$api->post('food/store', 'App\Api\V1\Controllers\FoodController@store');
 		$api->post('drink/store', 'App\Api\V1\Controllers\DrinkController@store');
+		$api->get('user/getloggedin', 'App\Api\V1\Controllers\UserController@getLoggedInUser');
+
 	});
 
 	//routing where log in is not needed.

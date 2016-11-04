@@ -20,6 +20,8 @@ import { PlaceService } from './services/place.service';
 import { FoodService } from './services/food.service';
 import { DrinkService } from './services/drink.service';
 import { GeolocationService } from './services/geolocation.service';
+import { UserService } from './services/user.service';
+
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -52,7 +54,7 @@ import { RegisterMenuComponent } from './register/register-menu.component';
       { path: 'crudplace', component: CrudPlaceComponent},
     ])],
     declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, RegisterBusinessComponent, RegisterMenuComponent, PlaceComponent, CrudPlaceComponent ],
-    providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS],
+    providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS, UserService],
     bootstrap:    [ AppComponent ]
   })
   export class AppModule { }

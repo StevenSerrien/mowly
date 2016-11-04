@@ -7,10 +7,13 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { tokenNotExpired } from 'angular2-jwt';
+import { UserService }  from "../services/user.service";
+
+
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: Http) { }
+  constructor(private http: Http, private userService: UserService) { }
   // private headers = new Headers({'Content-Type': 'application/json'});
   token: string;
   errormessage: string;

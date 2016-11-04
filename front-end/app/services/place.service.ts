@@ -13,7 +13,7 @@ import { AuthHttp } from 'angular2-jwt';
 @Injectable()
 export class PlaceService {
   constructor(private http: Http,
-  public authHttp: AuthHttp) { }
+  private authHttp: AuthHttp) { }
 
   sGetAllPlaces() {
     return this.http.get(`${AppSettings.API_ENDPOINT}/places`)

@@ -6,12 +6,13 @@
 </div>
 <div class="row">
   <div class="inner register">
+    <h1>place : {{place?.name}}</h1>
           <!-- Form Area -->
-          <div class="register-form">
+          <div class="register-form" *ngIf="!loading">
             <!-- Form -->
 
 
-            <form [formGroup]="foodForm" class="col-xs-12 col-md-6" (ngSubmit)="save(foodForm)" novalidate >
+            <form [formGroup]="foodForm" class="col-xs-12 col-md-6" novalidate >
               <h2 class="register-subtitle text-center">Your foods</h2>
               <div formArrayName="foods"  class=" wow animated slideInLeft">
                 <div *ngFor="let food of foodForm.controls.foods.controls; let i=index">
@@ -46,14 +47,14 @@
                     <button [disabled]="!foodForm.valid" id="addfoodinput-button" name="addfoodinput-button" (click)="addFoodInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </div><!-- End Bottom Submit -->
               </div>
-              <div class="margin-20">
+              <!--<div class="margin-20">
                 <div>myForm details:-</div>
                 <pre>Is myForm valid?: <br>{{foodForm.valid | json}}</pre>
                 <pre>form value: <br>{{foodForm.value | json}}</pre>
-              </div>
+              </div>-->
             <!-- <button type="submit" [disabled]="!foodForm.valid">Save my foods!</button> -->
             </form>
-            <form [formGroup]="drinkForm" class="col-xs-12 col-md-6" (ngSubmit)="save(drinkForm)" novalidate >
+            <form [formGroup]="drinkForm" class="col-xs-12 col-md-6" novalidate >
               <h2 class="register-subtitle text-center">Your drinks</h2>
               <div formArrayName="drinks"  class=" wow animated slideInRight">
                 <div *ngFor="let drink of drinkForm.controls.drinks.controls; let i=index">
@@ -103,7 +104,8 @@
 
 
 
-          </div><!-- End Contact Form Area -->
+          </div>
+          <div class="register-form" *ngIf="loading">Saving... Hold on</div>
       </div><!-- End Inner -->
 
 </div>

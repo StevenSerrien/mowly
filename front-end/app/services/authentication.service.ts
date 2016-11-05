@@ -8,15 +8,16 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { tokenNotExpired } from 'angular2-jwt';
 import { UserService }  from "../services/user.service";
-
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: Http, private userService: UserService) { }
+  constructor(private router: Router, private http: Http, private userService: UserService) { }
   // private headers = new Headers({'Content-Type': 'application/json'});
   token: string;
-  errormessage: string;
+  errorMessage: string;
+
 
   // //the promise way
   // login(gemail: string, gpassword: string): Promise<string> {
@@ -40,6 +41,7 @@ export class AuthenticationService {
         this.token = token;
         localStorage.setItem('id_token', token);
         //return true that register was succesfull
+        this.userDataToLocalStorage();
         return true;
       } else {
         return false;
@@ -66,6 +68,7 @@ export class AuthenticationService {
 
         // store username and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('id_token', token);
+        this.userDataToLocalStorage();
 
         // return true to indicate successful login
         return true;
@@ -74,27 +77,30 @@ export class AuthenticationService {
     });
   }
 
+  userDataToLocalStorage(){
+    this.userService.sGetLoggedInUserData()
+    .subscribe(user => {
+          //put fetched user data in local storage.
+          localStorage.setItem('user', JSON.stringify(user));
+          this.userService.userData();
+    },
+    err => {
+      // user fetch failed
+      this.errorMessage = err;
+      alert(this.errorMessage);
+    });
+  }
+
   loggedIn() {
     return tokenNotExpired();
   }
 
-  // private handleError (error: Response | any) {
-  //   // In a real world app, we might use a remote logging infrastructure
-  //   let errMsg: string;
-  //   if (error instanceof Response) {
-  //     const body = error.json() || '';
-  //     const err = body.error || JSON.stringify(body);
-  //     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-  //   } else {
-  //     errMsg = error.message ? error.message : error.toString();
-  //   }
-  //   console.error(errMsg);
-  //   return Promise.reject(errMsg);
-  //
-  // }
 
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('id_token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/']);
+
   }
 }

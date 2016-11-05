@@ -1,30 +1,32 @@
-<div class="container" *ngIf="!loading">
-    <div class="row">
+<section id="dashboard">
+    <div class="container" *ngIf="!loading">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title text-center"><h1>Dashboard</h1></div>
+                <div class="text-center wow animated bounce"><h4>Hey {{user?.name}}, let's get to work.</h4></div>
+                <div *ngFor="let place of places">
+                    <h5>{{place.name}}</h5>
+                    <address><p>{{place.streetname}} {{place.housenumber}}</p> <p>{{place.city}}, {{place.country}}</p></address>
+                    <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <button [routerLink]="['/dashboard/addplace']" class="form-btn semibold">Add a new place</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="loading">
         <div class="col-md-12">
-            <div class="title text-center"><h1>Dashboard</h1></div>
-            <div class="text-center"><h4>Hey {{user?.name}}, let's get to work.</h4></div>
-            <div *ngFor="let place of places">
-                <h5>{{place.name}}</h5>
-                <address><p>{{place.streetname}} {{place.housenumber}}</p> <p>{{place.city}}, {{place.country}}</p></address>
-                <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p>
+            <div class="title text-center">
+                <h1>Dashboard</h1>
+                <div class="text-center">
+                    <h4>Hold on, Mowly is fetching your stuff</h4>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="text-center">
-                <button [routerLink]="['/dashboard/addplace']" class="form-btn semibold">Add a new place</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="container" *ngIf="loading">
-    <div class="col-md-12">
-        <div class="title text-center">
-            <h1>Dashboard</h1>
-            <div class="text-center">
-                <h4>Hold on, Mowly is fetching your stuff</h4>
-            </div>
-        </div>
-    </div>
-</div>
+</section>

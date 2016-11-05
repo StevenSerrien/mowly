@@ -1,3 +1,6 @@
+import { Food } from '../models/food';
+import { Drink } from '../models/drink';
+
 export class Place {
   id: number;
   name: string;
@@ -7,4 +10,6 @@ export class Place {
   latitude: string;
   longitude: string;
   user_id: number;
+  foods: Food[];
+  drinks: Drink[];
 }

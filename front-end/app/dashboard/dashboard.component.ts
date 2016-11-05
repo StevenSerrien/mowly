@@ -23,10 +23,11 @@ export class DashboardComponent {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userservice: UserService) { }
+    private userService: UserService) { }
 
     ngOnInit() {
-      
+      this.userService.userData();
+      console.log(this.userService.user);
 
 
 

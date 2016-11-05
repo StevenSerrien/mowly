@@ -79,5 +79,8 @@ export class SearchResultsComponent {
     this.placeService.sGetPlacesByName(params)
     .subscribe(data => this.placesResults = data);
   }
+  onSelect(place: Place) {
+    this.router.navigate(['/place', place.id]);
+  }
 
 }

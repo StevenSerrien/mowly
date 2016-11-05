@@ -13,17 +13,20 @@ import { AuthHttp } from 'angular2-jwt';
 @Injectable()
 export class PlaceService {
   constructor(private http: Http,
-  private authHttp: AuthHttp) { }
+              private authHttp: AuthHttp) { }
 
   sGetAllPlaces() {
     return this.http.get(`${AppSettings.API_ENDPOINT}/places`)
-    .map(response => <Place[]>response.json().places);
+        .map(response => <Place[]>response.json().places)
+        .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
   sGetPlacesByName(params) {
     return this.http.get(`${AppSettings.API_ENDPOINT}/place/search`, {
       search: params
-    }).map(response => <Place[]>response.json().places);
+    })
+        .map(response => <Place[]>response.json().places)
+        .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
   sGetPlace(id) {
@@ -32,7 +35,7 @@ export class PlaceService {
 
   sGetGeoAndAdress(address) {
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC6szXLklZiZ5VxJHSd6vxBJHVMuzqWW2o&address='+address)
-    .map(response => response.json());
+        .map(response => response.json());
   }
 
   //the observer way
@@ -40,8 +43,8 @@ export class PlaceService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.authHttp.post(`${AppSettings.API_ENDPOINT}/place/store`,
-      JSON.stringify({name: name, streetname: streetname, housenumber: housenumber, city: city, country: country, latitude: latitude, longitude: longitude}), options)
-    .map(response => <Place>response.json().place)
-    .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
+        JSON.stringify({name: name, streetname: streetname, housenumber: housenumber, city: city, country: country, latitude: latitude, longitude: longitude}), options)
+        .map(response => <Place>response.json().place)
+        .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 }

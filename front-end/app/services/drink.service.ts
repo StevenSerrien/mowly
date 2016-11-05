@@ -20,7 +20,9 @@ export class DrinkService {
   sGetDrinksByName(params) {
       return this.http.get(`${AppSettings.API_ENDPOINT}/drink/search`, {
           search: params
-      }).map(response => <Drink[]>response.json().drinks);
+      })
+          .map(response => <Drink[]>response.json().drinks)
+          .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
     //the observer way

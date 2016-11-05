@@ -34,20 +34,20 @@ export class AuthenticationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.post(`${AppSettings.API_ENDPOINT}/auth/signup`, JSON.stringify({email: gemail, password: gpassword, name: gname}), options)
-    .map((response: Response) => {
-      // register successful if there's a jwt token in the response
-      if (response.json().hasOwnProperty("token")) {
-        let token = response.json().token;
-        this.token = token;
-        localStorage.setItem('id_token', token);
-        //return true that register was succesfull
-        this.userDataToLocalStorage();
-        return true;
-      } else {
-        return false;
-      }
-    })
-    .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
+        .map((response: Response) => {
+          // register successful if there's a jwt token in the response
+          if (response.json().hasOwnProperty("token")) {
+            let token = response.json().token;
+            this.token = token;
+            localStorage.setItem('id_token', token);
+            //return true that register was succesfull
+            this.userDataToLocalStorage();
+            return true;
+          } else {
+            return false;
+          }
+        })
+        .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
 
@@ -56,39 +56,40 @@ export class AuthenticationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.post(`${AppSettings.API_ENDPOINT}/auth/login`, JSON.stringify({email: gemail, password: gpassword}), options)
-    .map((response: Response) => {
-      // login successful if there's a jwt token in the response
-      let token = response.json().token;
-      if (token == 0) {
-        // return false to indicate failed login
-        return false;
-      } else {
-        // // set token property
-        this.token = token;
+        .map((response: Response) => {
+          // login successful if there's a jwt token in the response
+          let token = response.json().token;
+          if (token == 0) {
+            // return false to indicate failed login
+            return false;
+          } else {
+            // // set token property
+            this.token = token;
 
-        // store username and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('id_token', token);
-        this.userDataToLocalStorage();
+            // store username and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('id_token', token);
+            this.userDataToLocalStorage();
 
-        // return true to indicate successful login
-        return true;
+            // return true to indicate successful login
+            return true;
 
-      }
-    });
+          }
+        })
+        .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
   userDataToLocalStorage(){
     this.userService.sGetLoggedInUserData()
-    .subscribe(user => {
-          //put fetched user data in local storage.
-          localStorage.setItem('user', JSON.stringify(user));
-          this.userService.userData();
-    },
-    err => {
-      // user fetch failed
-      this.errorMessage = err;
-      alert(this.errorMessage);
-    });
+        .subscribe(user => {
+              //put fetched user data in local storage.
+              localStorage.setItem('user', JSON.stringify(user));
+              this.userService.userData();
+            },
+            err => {
+              // user fetch failed
+              this.errorMessage = err;
+              alert(this.errorMessage);
+            });
   }
 
   loggedIn() {

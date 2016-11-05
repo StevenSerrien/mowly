@@ -26,10 +26,21 @@ export class PlaceComponent {
     private placeservice: PlaceService) {}
 
     ngOnInit() {
-
+      this.loading = true;
       this.route.params.forEach((params: Params) => {
         let id = +params['id']; // (+) converts string 'id' to a number
-        this.placeservice.sGetPlace(id).subscribe(place => this.place = place);
+        this.placeservice.sGetPlace(id).subscribe(place => {
+          this.place = place;
+          this.loading = false;
+        },
+            err => {
+
+              // Place fetch failed failed
+              this.errorMessage = err;
+              alert(this.errorMessage);
+              this.loading = false;
+
+            });
       });
 
     }

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="loading">
+<div class="container" *ngIf="!loading">
     <div class="row">
         <div class="col-md-12">
             <div class="title text-center"><h1>Dashboard</h1></div>
@@ -18,7 +18,7 @@
         </div>
     </div>
 </div>
-<div class="container" *ngIf="!loading">
+<div class="container" *ngIf="loading">
     <div class="col-md-12">
         <div class="title text-center">
             <h1>Dashboard</h1>

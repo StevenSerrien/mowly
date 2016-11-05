@@ -19,21 +19,6 @@ export class UserService {
     user: User;
 
 
-    // //Dummy functions
-    // storePlaceByUser(name, streetname, housenumber, city, country, latitude, longitude) {
-    //
-    //     return this.http.post(`${AppSettings.API_ENDPOINT}/place/store`,
-    //       JSON.stringify({
-    //         name: name,
-    //         streetname: streetname,
-    //         housenumber: housenumber,
-    //         city: city,
-    //         country: country,
-    //         latitude: latitude,
-    //         longitude: longitude}), this.jwt())
-    //     .map((response: Response) => response.json());
-    // }
-
 
     sGetLoggedInUserData() {
       return this.authHttp.get(`${AppSettings.API_ENDPOINT}/user/getloggedin`)

@@ -26,6 +26,8 @@ export class SearchResultsComponent {
   drinksResults: Drink[];
   paramsSub: any;
   searchQuery: any;
+  latitude: string;
+  longitude: string;
 
   //Constructor for PlaceService
   constructor(
@@ -37,14 +39,8 @@ export class SearchResultsComponent {
 
   ngOnInit() {
 
-    // // //Get Params from URL
-    // // this.activatedRoute.params.forEach((params: Params) =>  {
-    // //   this.name= params['query'];  //get your param
-    // //
-    // // });
-    //
-    // this.name = this.activatedRoute.queryParams['query'];
-    // console.log(this.activatedRoute.queryParams['query']);
+    this.latitude = sessionStorage.getItem('latitude');
+    this.longitude = sessionStorage.getItem('longitude');
     this.activatedRoute.queryParams.forEach((params: Params) => {
        let query = params['query'];
        this.searchQuery = params['query'];

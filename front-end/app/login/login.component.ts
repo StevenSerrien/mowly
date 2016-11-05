@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { JwtHelper } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
+import {UserService} from "../services/user.service";
 
 @Component({
   //moduleId: module.id,
@@ -20,7 +21,8 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    private userService: UserService) { }
 
     ngOnInit() {
 
@@ -53,17 +55,23 @@ export class LoginComponent {
       .subscribe(result => {
         if (result === true) {
           // login successful
-          this.token = this.authenticationService.token;
-          // this.router.navigate(['/']);
-          this.loading = false;
-          this.router.navigate(['dashboard']);
+          //this.token = this.authenticationService.token;
 
-          var token = localStorage.getItem('id_token');
-          console.log(
-            this.jwtHelper.decodeToken(token),
-            this.jwtHelper.getTokenExpirationDate(token),
-            this.jwtHelper.isTokenExpired(token)
-          );
+          //var token = localStorage.getItem('id_token');
+          this.userService.sGetLoggedInUserData()
+              .subscribe(user => {
+                    //put fetched user data in local storage.
+                    localStorage.setItem('user', JSON.stringify(user));
+                    this.router.navigate(['dashboard']);
+                    this.loading = false;
+                  },
+                  err => {
+                    // user fetch failed
+                    this.errorMessage = err;
+                    alert(this.errorMessage);
+                    this.loading = false;
+                  });
+
 
         } else {
           // login failed

@@ -31,15 +31,6 @@ export class RegisterComponent {
       } 
     }
 
-    // goToNextStepBusiness() {
-    //   // Set our navigation extras object
-    //   // that contains our global query params and fragment
-    //
-    //   // Navigate to the login page with extras
-    //   this.router.navigate(['register/step-2']);
-    //   return false;
-    // }
-
     register(){
       this.loading = true;
       this.authenticationService.register(this.name, this.email, this.password)

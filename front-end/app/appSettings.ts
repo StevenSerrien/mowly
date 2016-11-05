@@ -3,4 +3,8 @@ export class AppSettings {
      return 'http://localhost:8888/api';
      //return 'http://mowly-backend.dev/api'
    }
+    public static get BASE_URL(): string {
+        return 'http://localhost:3000';
+        //return 'http://mowly.be'
+    }
 }

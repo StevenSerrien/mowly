@@ -4,6 +4,9 @@ import { AuthenticationService } from '../services/authentication.service';
 import { JwtHelper } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
 import { UserService } from '../services/user.service';
+import { Place } from '../models/place';
+import { User } from '../models/user'
+import {AppSettings} from "../appSettings";
 
 @Component({
   //moduleId: module.id,
@@ -18,6 +21,9 @@ export class DashboardComponent {
   token: string;
   errorMessage: string;
   jwtHelper: JwtHelper = new JwtHelper();
+  places: Place[];
+  user: User;
+  base_url: string;
 
 
   constructor(
@@ -26,10 +32,35 @@ export class DashboardComponent {
     private userService: UserService) { }
 
     ngOnInit() {
-      this.userService.userData();
-      console.log(this.userService.user);
+      this.loading = true;
+      this.userService.sGetLoggedInUserData()
+          .subscribe(user => {
+                //put fetched user data in local storage.
+                localStorage.setItem('user', JSON.stringify(user));
+                this.user = user;
+                //check if there are no places for this person
+                if (Object.keys(user.places).length === 0) {
+                  this.router.navigate(['register/step-2']);
+                }
+                if (Object.keys(user.places).length === 1) {
+                  this.router.navigate(['register/step-3']);
+                }
+                else {
+                  this.places = this.user.places;
+                  this.base_url = AppSettings.BASE_URL;
+                  this.loading = true;
 
-
-
+                }
+              },
+              err => {
+                // user fetch failed
+                this.errorMessage = err;
+                alert(this.errorMessage);
+              });
     }
+
+  onSelect(place: Place) {
+    this.router.navigate(['/place', place.id]);
+  }
+
   }

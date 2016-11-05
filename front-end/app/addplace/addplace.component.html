@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <h4 class='text-center addPlace-subtitle'>Add your new place</h4>
+    <h5 class='text-center addPlace-subtitle'>Mowly says don't do drugs</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="inner addPlace">
+          <!-- Form Area -->
+          <div class="addPlace-form">
+            <form novalidate="novalidate" onsubmit="return false;" class='wow animated slideInRight'>
+              <div class="col-xs-12 col-md-6 col-md-offset-3">
+                <input #searchAddressInput type="search" name="search" placeholder="Enter address" autocomplete="off" required="required" class="form">
+                <button type="submit" title="Find your stuff!" class="form-btn semibold" (click)="getAddress(searchAddressInput.value)">Find address
+                </button>
+                <br>
+              </div>
+            </form>
+              <!-- Form -->
+              <form id="addPlace" method="post" action="#" *ngIf="housenumber">
+                  <!-- Left Inputs -->
+                  <div class="col-xs-12 wow animated slideInRight">
+                    <!-- Message -->
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="business" id="businessname" required="required" class="form" placeholder="Name of your place" [(ngModel)]="name" />
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="streetname" id="streetname" required="required" class="form" placeholder="Streetname" [(ngModel)]="streetname" disabled/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="housenumber" id="housenumber" required="required" class="form" placeholder="Housenumber" disabled [(ngModel)]="housenumber"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="city" id="city" required="required" class="form" placeholder="City" [(ngModel)]="city" disabled/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-md-offset-3">
+                      <input type="text" name="country" id="country" required="required" class="form" placeholder="Country" [(ngModel)]="country" disabled/>
+                    </div>
+
+
+                  </div><!-- End Right Inputs -->
+
+                  <!-- Bottom Submit -->
+                  <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3 wow animated slideInRight">
+                      <!-- Send Button -->
+                      <button type="submit" id="submit" name="submit" (click)="addPlace()" class="form-btn semibold">addPlace</button>
+                  </div><!-- End Bottom Submit -->
+                  <!-- Clear -->
+                  <div class="clear"></div>
+              </form>
+
+
+
+          </div><!-- End Contact Form Area -->
+      </div><!-- End Inner -->
+
+</div>

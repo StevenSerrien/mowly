@@ -59,12 +59,12 @@ class DrinkController extends Controller
     // search for drinks and return every place that has it.
     public function searchDrinksWithLocation(Request $request)
     {
-        if ($request->input("foodquery") == '') {
+        if ($request->input("drinkquery") == '') {
             //searchstring can not be empty
             return 'Empty searchstring :-(';
         }
         else{
-            $query =  '%'.$request->input("foodquery").'%';
+            $query =  '%'.$request->input("drinkquery").'%';
             $from_latitude = $request->input("user_latitude");
             $from_longitude = $request->input("user_longitude");
             return $drinks = Drink

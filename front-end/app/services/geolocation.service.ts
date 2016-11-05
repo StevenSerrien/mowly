@@ -25,8 +25,8 @@ export class GeolocationService {
         console.log('Longitude: ' + position.coords.longitude);
           this.latitude = position.coords.latitude;
           this.longitude = position.coords.longitude;
-          sessionStorage.setItem('Latitude', <string>this.latitude);
-          sessionStorage.setItem('Longitude', <string>this.longitude);
+          sessionStorage.setItem('latitude', <string>this.latitude);
+          sessionStorage.setItem('longitude', <string>this.longitude);
       },
       // Error callback.
       (error: PositionError) => {
@@ -36,13 +36,11 @@ export class GeolocationService {
               this.longitude = data.lng;
               console.log('Latitude: ' + this.latitude);
               console.log('Longitude: ' + this.longitude);
-              sessionStorage.setItem('Latitude', <string>this.latitude);
-              sessionStorage.setItem('Longitude', <string>this.longitude);
+              sessionStorage.setItem('latitude', <string>this.latitude);
+              sessionStorage.setItem('longitude', <string>this.longitude);
           });
       }
     );
-
-
   }
     // Invokes getCurrentPosition method of Geolocation API.
     //the observer way

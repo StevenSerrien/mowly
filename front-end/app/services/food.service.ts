@@ -31,6 +31,14 @@ export class FoodService {
           .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
+    sGetFoodsByNameWithLocation(params) {
+        return this.http.get(`${AppSettings.API_ENDPOINT}/food/searchwithlocation`, {
+            search: params
+        })
+            .map(response => <Food[]>response.json().data);
+          //  .catch((error:any) => Observable.throw(error.json() || 'Server error'));
+    }
+
   //the observer way
   sAddFood(name: string, description: string, price: number, place_id: number): Observable<Food> {
     let headers = new Headers({ 'Content-Type': 'application/json' });

@@ -56,6 +56,7 @@ export class LoginComponent {
           this.token = this.authenticationService.token;
           // this.router.navigate(['/']);
           this.loading = false;
+          this.router.navigate(['dashboard']);
 
           var token = localStorage.getItem('id_token');
           console.log(

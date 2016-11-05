@@ -11,6 +11,9 @@ import { CrudPlaceComponent } from './crudplace/crudplace.component';
 
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { AuthGuardService  } from './services/auth-guard.service';
+
+
 
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -32,6 +35,8 @@ import { RegisterIndexComponent } from './register/register-index.component';
 import { RegisterBusinessComponent } from './register/register-business.component';
 import { RegisterMenuComponent } from './register/register-menu.component';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 
@@ -52,9 +57,10 @@ import { RegisterMenuComponent } from './register/register-menu.component';
       ]},
       { path: 'place/:id', component: PlaceComponent},
       { path: 'crudplace', component: CrudPlaceComponent},
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
     ])],
-    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, RegisterBusinessComponent, RegisterMenuComponent, PlaceComponent, CrudPlaceComponent ],
-    providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS, UserService],
+    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, RegisterBusinessComponent, RegisterMenuComponent, PlaceComponent, CrudPlaceComponent, DashboardComponent ],
+    providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS, UserService, AuthGuardService],
     bootstrap:    [ AppComponent ]
   })
   export class AppModule { }

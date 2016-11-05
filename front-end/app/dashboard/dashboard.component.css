@@ -26,3 +26,7 @@
 .form-btn:active{
     opacity: 0.9;
 }
+
+section#dashboard {
+    padding-bottom: 80px;
+}

@@ -13,7 +13,7 @@ section#business {
 }
 
 .hero-outer {
-  padding-top: 20px;  
+  padding-top: 20px;
 }
 
 section#business h2 {
@@ -63,3 +63,63 @@ section#business p {
   .business-call-to-action:active{
     opacity: 0.9;
   }
+
+/* BUSINESS BENEFITS SECTION STYLES */
+section#business-benefits {
+  min-height: 500px;
+
+}
+
+section#business-benefits > div.container > div.row > div > h2 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-family: 'Open Sans';
+  color: #f65d59;
+}
+  /* ICONS */
+  .pin-icon {
+    display: block;
+    padding-right: 40px;
+    margin-right: 40px;
+    height: 130px;
+    background-image:url('../images/menu.svg');
+    background-repeat: no-repeat;
+    vertical-align: top;
+    float: left;
+    width: 50px;
+  }
+  .doughnut-icon {
+    display: block;
+    padding-right: 40px;
+    margin-right: 40px;
+    height: 130px;
+    background-image:url('../images/doughnut.svg');
+    background-repeat: no-repeat;
+    vertical-align: top;
+    float: left;
+    width: 50px;
+  }
+  .smartphone-icon {
+    display: block;
+    padding-right: 40px;
+    margin-right: 40px;
+    height: 130px;
+    background-image:url('../images/smartphone.svg');
+    background-repeat: no-repeat;
+    vertical-align: top;
+    float: left;
+    width: 50px;
+  }
+
+  div.business-benefits-cols > div{
+    display: block;
+
+  }
+
+.business-benefits-cols h3 {
+  margin-top: 0px;
+}
+
+.business-benefits-cols p {
+  color: #818484;
+}

@@ -92,6 +92,11 @@ a:focus {
 /*	################################################################
 	BOOTSTRAP MODIFICATIONS & TWEAKS
 ################################################################# */
+
+a.navbar-brand {
+    padding: 12px 10px;
+}
+
 .navbar-default {
 	background-color: white !important;
 

@@ -18,13 +18,17 @@ export class FoodService {
   getAllFoods() {
     // http get from api then tell TS compiler to treat this as Food[] array then parse the string to json
     //and the array we want is under the foods keyword
-    return this.http.get(`${AppSettings.API_ENDPOINT}/foods`).map(response => <Food[]>response.json().foods);
+    return this.http.get(`${AppSettings.API_ENDPOINT}/foods`)
+        .map(response => <Food[]>response.json().foods)
+        .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
   sGetFoodsByName(params) {
       return this.http.get(`${AppSettings.API_ENDPOINT}/food/search`, {
           search: params
-      }).map(response => <Food[]>response.json().foods);
+      })
+          .map(response => <Food[]>response.json().foods)
+          .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
 
   //the observer way

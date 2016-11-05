@@ -5,7 +5,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="inner addPlace">
+  <div class="inner addPlace" [ngClass]="{'wow animated slideOutLeft': loading}">
           <!-- Form Area -->
           <div class="addPlace-form">
             <form novalidate="novalidate" onsubmit="return false;" class='wow animated slideInRight'>
@@ -54,4 +54,10 @@
           </div><!-- End Contact Form Area -->
       </div><!-- End Inner -->
 
+    <div class="inner addPlace" *ngIf="loading">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <h3>Loading hold on please...</h3>
+            <br>
+        </div>
+    </div>
 </div>

@@ -39,16 +39,16 @@ export class DashboardComponent {
                 localStorage.setItem('user', JSON.stringify(user));
                 this.user = user;
                 //check if there are no places for this person
-                if (Object.keys(user.places).length === 0) {
+                if (user.places.length === 0) {
                   this.router.navigate(['register/step-2']);
                 }
-                if (Object.keys(user.places).length === 1) {
+                if (user.places.length === 1) {
                   this.router.navigate(['register/step-3']);
                 }
                 else {
                   this.places = this.user.places;
                   this.base_url = AppSettings.BASE_URL;
-                  this.loading = true;
+                  this.loading = false;
 
                 }
               },

@@ -67,7 +67,6 @@ export class RegisterMenuComponent {
             localStorage.setItem('user', JSON.stringify(user));
             this.userService.userData();
             //check if there are no places for this person
-            console.log('my girth is: ' + Object.keys(this.userService.user.places).length);
             if (Object.keys(this.userService.user.places).length === 0) {
               this.router.navigate(['register/step-2']);
             }
@@ -133,11 +132,9 @@ export class RegisterMenuComponent {
     saveMenu() {
       this.loading = true;
       for (let food of this.foodForm.value.foods) {
-        // console.log(food); // 1, "string", false
         this.addFood(food.name, food.description, food.price, this.place_id);
       }
       for (let drink of this.drinkForm.value.drinks) {
-        //console.log(drink); // 1, "string", false
           this.addDrink(drink.name, drink.description, drink.price, this.place_id);
       }
 

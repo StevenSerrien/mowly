@@ -1,3 +1,113 @@
+/*section#dashboard-hero{
+  height: 8vh;
+  background-color: rgb(231, 231, 231);
+  color: white;
+
+}*/
+
+section#dashboard h2 {
+  color: rgb(78, 78, 78);
+}
+
+/*content: "\f0ca";*/
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+.profile-template {
+  position: relative;
+  min-height: 300px;
+  min-width: 300px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+/* FOR BUTTON IN ITEM */
+.hi-icon-wrap {
+	text-align: center;
+	margin: 0 auto;
+	padding: 2em 0 3em;
+}
+
+.hi-icon {
+	display: inline-block;
+	font-size: 0px;
+	cursor: pointer;
+	margin: 15px 30px;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	color: #fff;
+  text-decoration: none;
+  top: -70px;
+  left: 110px;
+}
+
+.hi-icon:after {
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	content: '';
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.hi-icon:before {
+	font-family: 'fontawesome';
+	speak: none;
+	font-size: 30px;
+	line-height: 60px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+}
+
+.hi-icon-pencil:before {
+	content: "\f0ca";
+}
+
+/* Effect 2 */
+.hi-icon-effect-2 .hi-icon {
+	color: #f65d59;
+	box-shadow: 0 0 0 3px #fff;
+	-webkit-transition: color 0.3s;
+	-moz-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.hi-icon-effect-2 .hi-icon:after {
+	top: -2px;
+	left: -2px;
+	padding: 2px;
+	z-index: -1;
+	background: #fff;
+	-webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.2s, opacity 0.2s;
+	transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Effect 2a */
+.hi-icon-effect-2a .hi-icon:hover {
+	color: #f4726f;
+}
+
+.hi-icon-effect-2a .hi-icon:hover:after {
+	-webkit-transform: scale(0.85);
+	-moz-transform: scale(0.85);
+	-ms-transform: scale(0.85);
+	transform: scale(0.85);
+}
+
+
 .form-btn{
     width:180px;
     display: block;
@@ -27,6 +137,50 @@
     opacity: 0.9;
 }
 
-section#dashboard {
-    padding-bottom: 80px;
+.dashboard-template {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.place-item {
+  position: relative;
+  min-height: 300px;
+  min-width: 300px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-bottom: 20px;
+  background-color: rgba(247, 247, 247, 0.86);
+}
+
+.place-item-title {
+  background-color: #ed706d;
+  /*background-image:url('../images/business-hero.jpg');*/
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Valera Round', sans-serif;
+  padding: 10px 0px;
+}
+
+.place-item-title h5 {
+  font-size: 1.5em;
+}
+
+.place-item-content {
+  padding: 30px 15px;
+}
+
+.place-item-content p{
+
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.place-item-menu-button {
+  background-color: white;
+  height: 65px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

@@ -1,32 +1,70 @@
+<!-- <section id="dashboard-hero">
+  <div class='container'>
+    <div class='row'>
+      <h1 class='text-center'>Let's do some work, {{user?.name}}</h1>
+    </div>
+  </div>
+</section> -->
+
+
 <section id="dashboard">
-    <div class="container" *ngIf="!loading">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="title text-center"><h1>Dashboard</h1></div>
-                <div class="text-center wow animated bounce"><h4>Hey {{user?.name}}, let's get to work.</h4></div>
-                <div *ngFor="let place of places">
-                    <h5>{{place.name}}</h5>
-                    <address><p>{{place.streetname}} {{place.housenumber}}</p> <p>{{place.city}}, {{place.country}}</p></address>
-                    <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p>
-                </div>
+  <div class='container'>
+    <h2>YOUR PROFILE</h2>
+    <div class='profile-template'>
+      <div class="row">
+        <div class='col-xs-12 col-md-9'></div>
+        <div class='col-xs-12 col-md-3'></div>
+      </div>
+    </div>
+    <h2>YOUR PLACES</h2>
+    <div class="dashboard-template">
+    <div class='row'>
+        <div *ngFor="let place of places" class='col-lg-4 col-xs-12'>
+          <div class="place-item">
+            <div class="place-item-title">
+              <h5 class="text-center">{{place.name}}</h5>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="text-center">
-                    <button [routerLink]="['/dashboard/addplace']" class="form-btn semibold">Add a new place</button>
-                </div>
+            <div class="place-item-content">
+            <address><p>{{place.streetname}} {{place.housenumber}}</p> <p>{{place.city}}, {{place.country}}</p></address>
+            <!-- <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p> -->
+            </div>
+            <div class='place-item-menu-button hi-icon-wrap hi-icon-effect-2 hi-icon-effect-2a'>
+              <a class="hi-icon hi-icon-pencil" href=""></a>
+            </div>
             </div>
         </div>
     </div>
-    <div class="container" *ngIf="loading">
-        <div class="col-md-12">
-            <div class="title text-center">
-                <h1>Dashboard</h1>
-                <div class="text-center">
-                    <h4>Hold on, Mowly is fetching your stuff</h4>
-                </div>
-            </div>
-        </div>
     </div>
+  </div>
 </section>
+
+<!-- <div class="container" *ngIf="!loading">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="title text-center"><h1>Dashboard</h1></div>
+            <div class="text-center wow animated bounce"><h4>Hey {{user?.name}}, let's get to work.</h4></div>
+            <div *ngFor="let place of places">
+                <h5>{{place.name}}</h5>
+                <address><p>{{place.streetname}} {{place.housenumber}}</p> <p>{{place.city}}, {{place.country}}</p></address>
+                <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center">
+                <button [routerLink]="['/dashboard/addplace']" class="form-btn semibold">Add a new place</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="loading">
+    <div class="col-md-12">
+        <div class="title text-center">
+            <h1>Dashboard</h1>
+            <div class="text-center">
+                <h4>Hold on, Mowly is fetching your stuff</h4>
+            </div>
+        </div>
+    </div>
+</div> -->

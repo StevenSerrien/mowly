@@ -123,3 +123,35 @@ section#business-benefits > div.container > div.row > div > h2 {
 .business-benefits-cols p {
   color: #818484;
 }
+
+@media (max-width: 730px) {
+  .hero-outer {
+    padding-top: 0px;
+  }
+
+  section#business h2 {
+
+    color: white;
+    font-family: "Valera Round", sans-serif;
+    font-size: 2em;
+    position: relative !important;
+    top: 60% !important;
+  }
+
+  section#business p {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+  }
+
+  section#business-benefits {
+    padding-bottom: 50px;
+  }
+
+
+
+
+
+
+}

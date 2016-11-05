@@ -94,9 +94,8 @@ class FoodController extends Controller
             $from_longitude = $request->input("user_longitude");
             return $foods = Food
                 ::join('places', 'foods.place_id', '=', 'places.id')
-                //->selectRaw(" *,".'ROUND ( ( 6371000 * acos( cos( radians('.$from_latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$from_longitude.') ) + sin( radians('.$from_latitude.') ) * sin( radians( latitude ) ) ) ) ) AS'." distance",'places.name as placeName', 'foods.*')
                 ->where('foods.name', 'LIKE', $query)
-                ->select('places.name as placeName', 'foods.*', \DB::raw('ROUND ( ( 6371000 * acos( cos( radians('.$from_latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$from_longitude.') ) + sin( radians('.$from_latitude.') ) * sin( radians( latitude ) ) ) ) ) AS'." distance",'places.name as placeName', 'foods.*'))
+                ->select('places.name as placeName', 'foods.*', \DB::raw('ROUND ( ( 6371000 * acos( cos( radians('.$from_latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$from_longitude.') ) + sin( radians('.$from_latitude.') ) * sin( radians( latitude ) ) ) ) ) AS'." distance"))
                 ->orderBy('distance')
                 ->paginate(10)
                 ->appends(Input::except('page'));

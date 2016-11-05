@@ -10,6 +10,8 @@ use App\Drink;
 use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Facades\Input;
+
 
 class DrinkController extends Controller
 {
@@ -53,6 +55,27 @@ class DrinkController extends Controller
       return $drinks;
     }
   }
+
+    // search for drinks and return every place that has it.
+    public function searchDrinksWithLocation(Request $request)
+    {
+        if ($request->input("foodquery") == '') {
+            //searchstring can not be empty
+            return 'Empty searchstring :-(';
+        }
+        else{
+            $query =  '%'.$request->input("foodquery").'%';
+            $from_latitude = $request->input("user_latitude");
+            $from_longitude = $request->input("user_longitude");
+            return $drinks = Drink
+                ::join('places', 'drinks.place_id', '=', 'places.id')
+                ->where('drinks.name', 'LIKE', $query)
+                ->select('places.name as placeName', 'drinks.*', \DB::raw('ROUND ( ( 6371000 * acos( cos( radians('.$from_latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$from_longitude.') ) + sin( radians('.$from_latitude.') ) * sin( radians( latitude ) ) ) ) ) AS'." distance"))
+                ->orderBy('distance')
+                ->paginate(10)
+                ->appends(Input::except('page'));
+        }
+    }
 
   //easy function that returns currently logged in user
   private function currentUser()

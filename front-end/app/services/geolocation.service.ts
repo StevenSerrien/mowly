@@ -1,31 +1,54 @@
 
 import { Injectable } from '@angular/core';
+import {Headers, RequestOptions, Http} from "@angular/http";
+import {AppSettings} from '../appSettings';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
-/**
-* GeolocationService class.
-* https://developers.google.com/maps/documentation/javascript/
-* https://dev.w3.org/geo/api/spec-source.html
-*
-* @author Roberto Simonetti
-*/
-@Injectable() export class GeolocationService {
+@Injectable()
+export class GeolocationService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
-  getCurrentPosition(){
+    latitude: number;
+    longitude: number;
+    lat: number;
+    lng: number;
 
-    // Invokes getCurrentPosition method of Geolocation API.
+  sGetCurrentPosition(){
     navigator.geolocation.getCurrentPosition(
-
       // Success callback.
       (position: Position) => {
         console.log('Latitude: ' + position.coords.latitude);
         console.log('Longitude: ' + position.coords.longitude);
+          this.latitude = position.coords.latitude;
+          this.longitude = position.coords.longitude;
+          sessionStorage.setItem('latitude', <string>this.latitude);
+          sessionStorage.setItem('longitude', <string>this.longitude);
       },
       // Error callback.
       (error: PositionError) => {
         console.log('Geolocation service: ' + error.message);
+          this.sGetCurrentLocationGMaps().subscribe(data => {
+              this.latitude = data.lat;
+              this.longitude = data.lng;
+              console.log('Latitude: ' + this.latitude);
+              console.log('Longitude: ' + this.longitude);
+              sessionStorage.setItem('latitude', <string>this.latitude);
+              sessionStorage.setItem('longitude', <string>this.longitude);
+          });
       }
     );
   }
+    // Invokes getCurrentPosition method of Geolocation API.
+    //the observer way
+    sGetCurrentLocationGMaps(){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${AppSettings.GOOGLE_API_KEY}`,'',options)
+            .map(response => <any>response.json().location)
+            .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
+    }
 }

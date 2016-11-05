@@ -7,4 +7,7 @@ export class AppSettings {
         return 'http://localhost:3000';
         //return 'http://mowly.be'
     }
+    public static get GOOGLE_API_KEY(): string {
+        return 'AIzaSyC6szXLklZiZ5VxJHSd6vxBJHVMuzqWW2o';
+    }
 }

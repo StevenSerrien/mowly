@@ -23,7 +23,7 @@ export class SearchComponent {
   ngOnInit() {
     this.placeService.sGetAllPlaces()
     .subscribe(data => this.places = data);
-    this.geolocationService.getCurrentPosition();
+    this.geolocationService.sGetCurrentPosition();
 
   }
 

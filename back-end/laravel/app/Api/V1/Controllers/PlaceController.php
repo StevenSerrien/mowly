@@ -4,11 +4,13 @@ namespace App\Api\V1\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Pagination\Paginator;
 use JWTAuth;
 use App\Place;
 use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Facades\Input;
 
 class PlaceController extends Controller
 {
@@ -70,15 +72,28 @@ class PlaceController extends Controller
     if ($request->input("placequery") == '') {
       //searchstring can not be empty
       return 'Empty searchstring :-(';
-    } else {
+    }
+ /*   else {
       $query =  '%'.$request->input("placequery").'%';
       $from_latitude = $request->input("user_latitude");
       $from_longitude = $request->input("user_longitude");
       //distance is in m
       $distance = $request->input("distance");
       $places = Place::where('name', 'LIKE', $query)->distance($from_latitude,$from_longitude,$distance)->get();
-      return $places;
-    }
+        $result_p = new Paginator($places, 5, $request->input('page'),['path' => $request->fullUrlWithQuery($request->all()) ]);
+        return $result_p;
+    }*/
+ else{
+     $query =  '%'.$request->input("placequery").'%';
+     $from_latitude = $request->input("user_latitude");
+     $from_longitude = $request->input("user_longitude");
+     return $places = Place
+         ::selectRaw(" *,".'ROUND ( ( 6371000 * acos( cos( radians('.$from_latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$from_longitude.') ) + sin( radians('.$from_latitude.') ) * sin( radians( latitude ) ) ) ) ) AS'." distance ")
+         ->where('name', 'LIKE', $query)
+         ->orderBy('distance')
+         ->paginate(10)
+         ->appends(Input::except('page'));
+ }
   }
 
   // Get all places nearby user.

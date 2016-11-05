@@ -50,10 +50,12 @@ export class LoginComponent {
     //the observer way
 
     login(email: string, password: string){
-      this.loading = true;
+
       this.authenticationService.login(email, password)
       .subscribe(result => {
         if (result === true) {
+          this.errorMessage = null;
+          this.loading = true;
           // login successful
           //this.token = this.authenticationService.token;
 

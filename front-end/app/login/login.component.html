@@ -1,4 +1,4 @@
-<div class="col-lg-6 col-lg-offset-3">
+<!-- <div class="col-lg-6 col-lg-offset-3">
     <h2>Login to your business.</h2>
     <form name="form" (ngSubmit)="f.form.valid && login(model.email, model.password); $event.stopPropagation()" #f="ngForm" novalidate>
         <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
@@ -24,5 +24,53 @@
         jouw error message is:
         {{errorMessage}}
     </div>
+
+</div> -->
+<div class='container'>
+
+
+<div class="row">
+  <div class="col-sm-12 col-md-12">
+    <h4 class='text-center register-subtitle'>{{greetmessage}}</h4>
+    <h5 class='text-center register-subtitle'>{{stepnumber}}</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="inner register">
+          <!-- Form Area -->
+          <div class="register-form">
+              <h2 class='col-xs-12 col-md-6 col-md-offset-3 animated slideInLeft text-center'>Welcome back, nigguh!</h2>
+              <form id="register" (ngSubmit)="login(model.email, model.password)" >
+                  <!-- Left Inputs -->
+                  <div class="col-xs-12 col-md-6 col-md-offset-3 animated slideInLeft" >
+
+                      <input type="email" [(ngModel)]="model.email" name="mail" id="mail" required="required" class="form" placeholder="Email" />
+
+                      <input type="password" [(ngModel)]="model.password" name="password" id="password" required="required" class="form" placeholder="Password" />
+                  </div>
+
+
+                  <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
+
+                      <button type="submit" id="submit" name="submit" class="form-btn semibold">LOGIN</button>
+
+                  </div>
+
+                  <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3 text-center">
+                    <div class="errorMessage animated bounceIn"*ngIf="errorMessage">
+                        {{errorMessage}}
+                    </div>
+                    <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                    <span  *ngIf="loading" class="sr-only">Loading...</span>
+                  </div>
+
+                  <div class="clear"></div>
+
+              </form>
+
+          </div>
+      </div>
+
+</div>
 
 </div>

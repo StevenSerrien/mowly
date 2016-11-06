@@ -12,10 +12,10 @@ export class GeolocationService {
 
   constructor(private http: Http) { }
 
-    latitude: number;
-    longitude: number;
-    lat: number;
-    lng: number;
+    latitude: string;
+    longitude: string;
+    lat: string;
+    lng: string;
 
   sGetCurrentPosition(){
     navigator.geolocation.getCurrentPosition(
@@ -23,21 +23,21 @@ export class GeolocationService {
       (position: Position) => {
         console.log('Latitude: ' + position.coords.latitude);
         console.log('Longitude: ' + position.coords.longitude);
-          this.latitude = position.coords.latitude;
-          this.longitude = position.coords.longitude;
-          sessionStorage.setItem('latitude', <string>this.latitude);
-          sessionStorage.setItem('longitude', <string>this.longitude);
+          this.latitude = position.coords.latitude.toString();
+          this.longitude = position.coords.longitude.toString();
+          sessionStorage.setItem('latitude', this.latitude);
+          sessionStorage.setItem('longitude', this.longitude);
       },
       // Error callback.
       (error: PositionError) => {
         console.log('Geolocation service: ' + error.message);
           this.sGetCurrentLocationGMaps().subscribe(data => {
-              this.latitude = data.lat;
-              this.longitude = data.lng;
+              this.latitude = <string>data.lat;
+              this.longitude = <string>data.lng;
               console.log('Latitude: ' + this.latitude);
               console.log('Longitude: ' + this.longitude);
-              sessionStorage.setItem('latitude', <string>this.latitude);
-              sessionStorage.setItem('longitude', <string>this.longitude);
+              sessionStorage.setItem('latitude', this.latitude);
+              sessionStorage.setItem('longitude', this.longitude);
           });
       }
     );

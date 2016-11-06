@@ -18,7 +18,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
     selector: 'searchresults',
     templateUrl: 'app/searchresults/searchresults.component.html',
-    styleUrls:['app/searchresults/searchresults.component.css'],
+    styleUrls:['app/searchresults/searchresults.component.css']
 })
 export class SearchResultsComponent {
     placesResults: Place[];

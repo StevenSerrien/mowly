@@ -37,6 +37,7 @@ import { RegisterMenuComponent } from './register/register-menu.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddPlaceComponent } from "./addplace/addplace.component";
+import { TRUNCATE_PIPES } from 'ng2-truncate';
 
 
 
@@ -61,7 +62,7 @@ import { AddPlaceComponent } from "./addplace/addplace.component";
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
       { path: 'dashboard/addplace', component: AddPlaceComponent, canActivate: [AuthGuardService]},
     ])],
-    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, RegisterBusinessComponent, RegisterMenuComponent, PlaceComponent, CrudPlaceComponent, DashboardComponent, AddPlaceComponent ],
+    declarations: [ AppComponent, HomeComponent, BusinessComponent, SearchResultsComponent, SearchComponent, LoginComponent, RegisterComponent, RegisterIndexComponent, RegisterBusinessComponent, RegisterMenuComponent, PlaceComponent, CrudPlaceComponent, DashboardComponent, AddPlaceComponent, TRUNCATE_PIPES ],
     providers:    [ PlaceService, FoodService, DrinkService, GeolocationService, AuthenticationService, AUTH_PROVIDERS, UserService, AuthGuardService],
     bootstrap:    [ AppComponent ]
   })

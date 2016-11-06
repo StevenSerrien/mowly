@@ -149,3 +149,6 @@ input {
     z-index: 9999;
 }
 
+section {
+    padding-bottom: 50px;
+}

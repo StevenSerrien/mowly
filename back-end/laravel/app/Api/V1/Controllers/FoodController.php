@@ -112,7 +112,7 @@ class FoodController extends Controller
                 ->where('foods.name', 'LIKE', $query)
                 ->select('places.name as placeName', 'foods.*', \DB::raw('ROUND ( ( 6371000 * acos( cos( radians('.$from_latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$from_longitude.') ) + sin( radians('.$from_latitude.') ) * sin( radians( latitude ) ) ) ) ) AS'." distance"))
                 ->orderBy('distance')
-                ->paginate(10)
+                ->paginate(5)
                 ->appends(Input::except('page'));
         }
     }

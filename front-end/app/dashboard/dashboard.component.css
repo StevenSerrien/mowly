@@ -443,3 +443,7 @@ button.submit, .edit-profile-card button {
 .clickable{
   cursor: pointer;
 }
+
+section#dashboard{
+  padding-bottom: 50px;
+}

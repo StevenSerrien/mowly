@@ -106,7 +106,7 @@ class PlaceController extends Controller
                 ::selectRaw(" *,".'ROUND ( ( 6371000 * acos( cos( radians('.$from_latitude.') ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians('.$from_longitude.') ) + sin( radians('.$from_latitude.') ) * sin( radians( latitude ) ) ) ) ) AS'." distance ")
                 ->where('name', 'LIKE', $query)
                 ->orderBy('distance')
-                ->paginate(10)
+                ->paginate(5)
                 ->appends(Input::except('page'));
         }
     }

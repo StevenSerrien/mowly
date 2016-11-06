@@ -24,6 +24,7 @@ export class DashboardComponent {
   places: Place[];
   user: User;
   base_url: string;
+  detailsSectionState: string;  //states 'viewdetails' or 'editpassword' or 'editdetails'
 
 
   constructor(
@@ -33,6 +34,7 @@ export class DashboardComponent {
 
     ngOnInit() {
       this.loading = true;
+      this.detailsSectionState = 'viewdetails';
       this.userService.sGetLoggedInUserData()
           .subscribe(user => {
                 //put fetched user data in local storage.
@@ -49,8 +51,6 @@ export class DashboardComponent {
                   this.places = this.user.places;
                   this.base_url = AppSettings.BASE_URL;
                   this.loading = false;
-                  
-
                 }
               },
               err => {
@@ -62,6 +62,11 @@ export class DashboardComponent {
 
   onSelect(place: Place) {
     this.router.navigate(['/place', place.id]);
+  }
+
+  changeState(state: string){
+      this.detailsSectionState = state;
+      console.log(this.detailsSectionState);
   }
 
   }

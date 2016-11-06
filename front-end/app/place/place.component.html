@@ -1,66 +1,182 @@
 <section id="menu-hero">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 hero-outer">
-        <h1 class="wow animated bounceInLeft text-center">{{place?.name}} menu</h1>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 hero-outer">
+                <h1 class="wow animated bounceInLeft text-center">{{place?.name}} menu</h1>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 
 <section id="menu-card" *ngIf="!loading">
-<div class='container menu-card'>
-  <div class='row'>
-    <div class='menu-card-title'>
-    <h2>FOOD</h2>
-    </div>
 
-    <div class="foods" *ngIf="place?.foods[0]">
-    <div *ngFor="let food of place?.foods" class="text-center summing-up-block">
-      <div class='menu-item'>
-        <div class='col-xs-8 menu-food'>
-            <div class='menu-name text-left'>
-              {{food.name}}
-            </div>
-            <div class='menu-description text-left'>
-              {{food.description}}
-            </div>
-        </div>
-        <div class='col-xs-4'>
-          <div class="menu-price">
-              {{food.price | currency:'EUR':true}}
-          </div>
-        </div>
-        </div>
-    </div>
-    </div>
-    <div class='menu-card-title'>
-    <h2>DRINKS</h2>
-    </div>
-    <div class="drinks" *ngIf="place?.drinks[0]">
-    <div *ngFor="let drink of place?.drinks" class="text-center summing-up-block">
-      <div class='menu-item'>
-        <div class='col-xs-8 menu-food'>
-            <div class='menu-name text-left'>
-              {{drink.name}}
-            </div>
-            <div class='menu-description text-left'>
-              {{drink.description}}
-            </div>
-        </div>
-        <div class='col-xs-4'>
-          <div class="menu-price">
-              {{drink.price | currency:'EUR':true}}
-          </div>
-        </div>
-        </div>
-    </div>
-    </div>
+    <div class='container menu-card'>
+        <p *ngIf="isOwnedByLoggedInUser && !editMode" (click)="startEditMode()" class="clickable">Enter edit mode</p>
+        <p *ngIf="isOwnedByLoggedInUser && editMode" (click)="exitEditMode()" class="clickable">Exit edit mode</p>
 
-  </div>
-</div>
+        <div class='row'>
+            <div class='menu-card-title'>
+                <h2>FOOD</h2>
+            </div>
+
+            <div class="foods" *ngIf="place?.foods[0]">
+                <div *ngFor="let food of place?.foods" class="text-center summing-up-block">
+                    <div class='menu-item'>
+                        <div class='col-xs-8 menu-food'>
+                            <div class='menu-name text-left'>
+                                <i class="fa fa-minus delete clickable" (click)="deleteFood(food)" aria-hidden="true" *ngIf="editMode"></i>
+                                {{food.name}}
+                            </div>
+                            <div class='menu-description text-left'>
+                                {{food.description}}
+                            </div>
+                        </div>
+                        <div class='col-xs-4'>
+                            <div class="menu-price">
+                                {{food.price | currency:'EUR':true}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='menu-card-title'>
+                <h2>DRINKS</h2>
+            </div>
+            <div class="drinks" *ngIf="place?.drinks[0]">
+                <div *ngFor="let drink of place?.drinks" class="text-center summing-up-block">
+                    <div class='menu-item'>
+                        <div class='col-xs-8 menu-food'>
+                            <div class='menu-name text-left'>
+                                <i class="fa fa-minus delete clickable" (click)="deleteDrink(drink)" aria-hidden="true" *ngIf="editMode"></i>
+                                {{drink.name}}
+                            </div>
+                            <div class='menu-description text-left'>
+                                {{drink.description}}
+                            </div>
+                        </div>
+                        <div class='col-xs-4'>
+                            <div class="menu-price">
+                                {{drink.price | currency:'EUR':true}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" *ngIf="isOwnedByLoggedInUser && editMode">
+            <div class="inner register">
+
+                <!-- Form Area -->
+                <div class="register-form" *ngIf="!loading">
+                    <!-- Form -->
+
+
+                    <form [formGroup]="foodForm" class="col-xs-12 col-md-6" novalidate >
+                        <h2 class="register-subtitle text-center">Your foods</h2>
+                        <div formArrayName="foods"  class=" wow animated slideInLeft">
+                            <div *ngFor="let food of foodForm.controls.foods.controls; let i=index">
+                                <div class="foodcard">
+                                    <!-- <span class='dishnumber'>Your dish nr: {{i + 1}}</span> -->
+                                    <i class='fa fa-times removeItem clickable' *ngIf="foodForm.controls.foods.controls.length > 1"
+                                       (click)="removeFood(i)" aria-hidden="true">
+                                    </i>
+                                    <div class='foodinputlist'>
+                                        <div [formGroupName]="i" class="foodinputs">
+                                            <div class="col-xs-8">
+                                                <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" formControlName="name" />
+
+                                                <!--display error message if street is not valid-->
+                                                <!-- <small [hidden]="foodForm.controls.foods.controls[i].controls.foods.valid">
+                                                  Name is required.
+                                                </small> -->
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <input type="number" name="price" id="price" required="required" class="form" placeholder="price (e.g. 19.20)" formControlName="price" />
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
+                                <!-- Send Button -->
+                                <button [disabled]="!foodForm.valid" id="addfoodinput-button" name="addfoodinput-button" (click)="addFoodInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </div><!-- End Bottom Submit -->
+                        </div>
+                        <!--<div class="margin-20">
+                          <div>myForm details:-</div>
+                          <pre>Is myForm valid?: <br>{{foodForm.valid | json}}</pre>
+                          <pre>form value: <br>{{foodForm.value | json}}</pre>
+                        </div>-->
+                        <!-- <button type="submit" [disabled]="!foodForm.valid">Save my foods!</button> -->
+                    </form>
+                    <form [formGroup]="drinkForm" class="col-xs-12 col-md-6" novalidate >
+                        <h2 class="register-subtitle text-center">Your drinks</h2>
+                        <div formArrayName="drinks"  class=" wow animated slideInRight">
+                            <div *ngFor="let drink of drinkForm.controls.drinks.controls; let i=index">
+                                <div class="drinkcard">
+                                    <!-- <span class='dishnumber'>Your dish nr: {{i + 1}}</span> -->
+
+                                    <i class='fa fa-times removeItem clickable' *ngIf="drinkForm.controls.drinks.controls.length > 1"
+                                       (click)="removeDrink(i)" aria-hidden="true">
+                                    </i>
+                                    <div class='drinkinputlist'>
+                                        <div [formGroupName]="i" class="drinkinputs">
+                                            <div class="col-xs-8">
+                                                <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" formControlName="name" />
+
+                                                <!--display error message if street is not valid-->
+                                                <!-- <small [hidden]="foodForm.controls.foods.controls[i].controls.foods.valid">
+                                                  Name is required.
+                                                </small> -->
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <input type="number" name="price" id="price" required="required" class="form" placeholder="price (e.g. 19.20)" formControlName="price" />
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3">
+                                <!-- Send Button -->
+                                <button  [disabled]="!drinkForm.valid"id="adddrinkinput-button" name="adddrinkinput-button" (click)="addDrinkInput()" class="form-btn semibold"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </div><!-- End Bottom Submit -->
+                        </div>
+                        <!-- <button type="submit" [disabled]="!drinkForm.valid">Save my drinks!</button> -->
+                    </form>
+                    <div class="relative fullwidth col-xs-12 col-md-12 saveMenuButton">
+                        <!-- Send Button -->
+                        <button [disabled]="(!drinkForm.valid) && (!foodForm.valid)" type="submit" id="submit" name="submit" (click)="saveMenu()" class="form-btn semibold">Save your menu</button>
+                    </div><!-- End Bottom Submit -->
+                    <!-- <h4 class='register-subtitle'>Drinks</h4>
+                    <form [formGroup]="drinkForm" novalidate (ngSubmit)="save(myForm)">
+                      <div formArrayName="drinks">
+                      </div>
+                      <button type="submit" [disabled]="!drinkForm.valid">Submit</button>
+                    </form> -->
+
+
+
+
+                </div>
+                <div class="register-form" *ngIf="loading">Saving... Hold on</div>
+            </div><!-- End Inner -->
+        </div>
+    </div>
 </section>
+
+
+
+
 <!-- <div class="col-lg-6 col-lg-offset-3" *ngIf="!loading">
 
     <h3 [ngClass]="{'wow animated hinge': !place?.foods[0]}">Food</h3>

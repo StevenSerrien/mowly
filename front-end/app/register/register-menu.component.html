@@ -60,9 +60,9 @@
                 <div *ngFor="let drink of drinkForm.controls.drinks.controls; let i=index">
                   <div class="drinkcard">
                     <!-- <span class='dishnumber'>Your dish nr: {{i + 1}}</span> -->
-                    <span *ngIf="drinkForm.controls.drinks.controls.length > 1"
-                      (click)="removeDrink(i)">
-                    </span>
+                    <i class='fa fa-times removeItem clickable' *ngIf="drinkForm.controls.drinks.controls.length > 1"
+                       (click)="removeDrink(i)" aria-hidden="true">
+                    </i>
                   <div class='drinkinputlist'>
                   <div [formGroupName]="i" class="drinkinputs">
                     <div class="col-xs-8">

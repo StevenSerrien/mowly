@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 //FindorFail error catch
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Input;
-
+use Response;
 
 class FoodController extends Controller
 {
@@ -42,6 +42,21 @@ class FoodController extends Controller
             return $this->response->error('Only_place_owner_can_add_foods', 500);
         }
 
+    }
+
+    public function delete($id)
+    {
+    $food = Food::with('place')->find($id);
+    $user = $this->currentUser();
+        if ($food->place->user_id == $user->id)
+        {
+            $food->delete();
+            return 'Food deleted';
+
+        }
+        else{
+            return Response::make(['errors' => [['Only owner can delete.']]], 401);
+        }
     }
 
     // search for foods and return every place that has it.

@@ -65,23 +65,212 @@ section#menu-card {
   padding-left: 20px;
 }
 
-
-
-
-
-
-/*section#business h2 {
-
-  color: white;
-  font-family: "Valera Round", sans-serif;
-  font-size: 4em;
-  position: relative !important;
-  top: 60% !important;
+.delete{
+  color: red;
+}
+.clickable{
+    cursor: pointer;
 }
 
-section#business p {
-  color: white;
-  font-family: "Open Sans", sans-serif;
-  font-size: 2em;
-  font-weight: 100;
-}*/
+
+
+
+/* Test CSS */
+
+
+.registergreet {
+    margin-top: 75px;
+    margin-bottom: 75px;
+    color :#f65d59;
+}
+
+.register-subtitle {
+    color: #f65d59;
+}
+
+h6{
+    color: #bac3c3;
+}
+
+#submit {
+    width: 100%;
+}
+
+/* FORM STYLES */
+
+.register-form {
+    margin-top: 50px;
+}
+
+#contact{
+    padding:10px 0 10px;
+}
+
+.contact-text{
+    margin:45px auto;
+}
+
+.mail-message-area{
+    width:100%;
+    padding:0 15px;
+}
+
+.mail-message{
+    width: 100%;
+    background:rgba(255,255,255, 0.8) !important;
+    -webkit-transition: all 0.7s;
+    -moz-transition: all 0.7s;
+    transition: all 0.7s;
+    margin:0 auto;
+    border-radius: 0;
+}
+
+.not-visible-message{
+    height:0px;
+    opacity: 0;
+}
+
+.visible-message{
+    height:auto;
+    opacity: 1;
+    margin:25px auto 0;
+}
+
+/* Input Styles */
+
+.form{
+    width: 100%;
+    padding: 15px;
+    background:#f8f8f8;
+    border:1px solid rgba(0, 0, 0, 0.075);
+    margin-bottom:25px;
+    color:#727272 !important;
+    font-size:13px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.form:hover{
+    border:1px solid #f65d59;
+}
+
+.form:focus{
+    color: white;
+    outline: none;
+    border:1px solid #f65d59;
+}
+
+.textarea{
+    height: 200px;
+    max-height: 200px;
+    max-width: 100%;
+}
+
+/* Generic Button Styles */
+
+.button{
+    padding:8px 12px;
+    background:#0A5175;
+    display: block;
+    width:120px;
+    margin:10px 0 0px 0;
+    border-radius:3px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align:center;
+    font-size:0.8em;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+}
+
+.button:hover{
+    background:#8BC3A3;
+    color:white;
+}
+
+/* Send Button Styles */
+
+.form-btn{
+    width:180px;
+    display: block;
+    height: auto;
+    padding:15px;
+    color:#fff;
+    background:#f65d59;
+    border:none;
+    border-radius:3px;
+    outline: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:auto;
+    box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+    -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+}
+
+.form-btn:hover{
+    background:#e2524e;
+    color: white;
+    border:none;
+}
+
+.form-btn:active{
+    opacity: 0.9;
+}
+center{
+    margin-top:330px;
+}
+input {
+    position: relative;
+    z-index: 9999;
+}
+
+.dishnumber {
+    font-family: 'Varela Round', sans-serif;
+    color: grey;
+}
+
+.foodinputs div{
+    padding-left: 0px !important;
+}
+
+
+.foodinputlist {
+
+}
+
+#addfoodinput-button, #adddrinkinput-button {
+    border-radius: 100%;
+    width: 45px;
+}
+
+.foodcard {
+
+}
+
+.saveMenuButton {
+    margin-top: 30px !important;
+}
+
+/* Currency label before inputs*/
+span.input-group-addon {
+    height: 60% !important;
+}
+
+
+button[disabled]{
+    opacity: 0.65 !important;
+    cursor: not-allowed !important;
+}
+
+i.removeItem {
+
+    position: relative !important;
+    left: -8px;
+
+    color: #e2524e;
+}

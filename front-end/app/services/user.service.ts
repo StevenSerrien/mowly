@@ -52,4 +52,18 @@ export class UserService {
             return new RequestOptions({ headers: headers });
         }
     }
-}
+
+    changeUserDetails (gemail: string, gname: string){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.authHttp.post(`${AppSettings.API_ENDPOINT}/user/edituserdata`, JSON.stringify({email: gemail, name: gname}), options)
+            .map((response: Response) => response)
+            .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
+    }
+    changeUserPassword (goldpassword: string, gnewpassword: string){
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.authHttp.post(`${AppSettings.API_ENDPOINT}/user/edituserpassword`, JSON.stringify({old_password: goldpassword, new_password: gnewpassword}), options)
+            .map((response: Response) => response)
+            .catch((error:any) => Observable.throw(error.json().errors[0]  ||  'Server error'));
+    }}

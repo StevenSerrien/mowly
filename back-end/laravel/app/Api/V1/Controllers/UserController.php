@@ -12,6 +12,8 @@ use Dingo\Api\Routing\Helpers;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Dingo\Api\Exception\ValidationHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Response;
 
 
 class UserController extends Controller
@@ -79,7 +81,7 @@ class UserController extends Controller
             }
         }
         else{
-            return $this->response->error('could_not_change_user_password_password_incorrect', 500);
+            return Response::make(['errors' => [['Incorrect password']]], 401);
         }
     }
 }

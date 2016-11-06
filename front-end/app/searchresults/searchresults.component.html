@@ -9,7 +9,7 @@
  					<i class="fa fa-map-marker text-center"></i>
           <h4>Check out the menucards for these places</h4>
           <div *ngFor="let place of placesResults" class="text-center summing-up-block">
-            <h2>{{place.name}}</h2>
+            <h2>{{place.name | truncate : 35}}</h2>
             <p>{{place.streetname}} {{place.housenumber}}</p>
             <p>{{place.city}}, {{place.country}}</p>
               <p>Distance: {{place.distance}}m</p>
@@ -25,10 +25,10 @@
  					<i class="fa fa-cutlery"></i>
           <h4>Foods like '{{searchQuery}}' can be found here</h4>
           <div *ngFor="let food of foodsResults" class="text-center">
-              <h4>{{food.name}}</h4>
+              <h4>{{food.name | truncate : 35 }}</h4>
               <p></p>
               <p>{{food.price | currency:'EUR':true:'1.2-2'}}</p>
-                <p>{{food.description}}</p>
+                <p>{{food.description | truncate : 40 }}</p>
               <p><a href="javascript:void(0);" (click)="onSelect(food.place_id)">{{food.placeName}}</a></p>
               <p>Distance: {{food.distance}}m</p>
           </div>
@@ -40,8 +40,8 @@
  					<i class="fa fa-beer"></i>
           <h4>Drinks like '{{searchQuery}}' can be found here</h4>
           <div *ngFor="let drink of drinksResults" class="text-center">
-            <h4>{{drink.name}}</h4>
-            <p></p>
+            <h4>{{drink.name | truncate : 35}}</h4>
+              <p>{{drink.description | truncate : 40 }}</p>
             <p>{{drink.price | currency:'EUR':true:'1.2-2'}}, <a href="javascript:void(0);" (click)="onSelect(drink.place_id)">{{drink.placeName}}</a></p>
               <p>Distance: {{drink.distance}}m</p>
           </div>

@@ -112,8 +112,8 @@ export class SearchResultsComponent {
         this.placeService.sGetPlacesByNameWithLocation(params)
             .subscribe(data => this.placesResults = data);
     }
-    onSelect(place: Place) {
-        this.router.navigate(['/place', place.id]);
+    onSelect(place_id: number) {
+        this.router.navigate(['/place', place_id]);
     }
 
 }

@@ -10,38 +10,41 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class GeolocationService {
 
-  constructor(private http: Http) { }
+    constructor(private http: Http) { }
 
     latitude: string;
     longitude: string;
     lat: string;
     lng: string;
 
-  sGetCurrentPosition(){
-    navigator.geolocation.getCurrentPosition(
-      // Success callback.
-      (position: Position) => {
-        console.log('Latitude: ' + position.coords.latitude);
-        console.log('Longitude: ' + position.coords.longitude);
-          this.latitude = position.coords.latitude.toString();
-          this.longitude = position.coords.longitude.toString();
-          sessionStorage.setItem('latitude', this.latitude);
-          sessionStorage.setItem('longitude', this.longitude);
-      },
-      // Error callback.
-      (error: PositionError) => {
-        console.log('Geolocation service: ' + error.message);
-          this.sGetCurrentLocationGMaps().subscribe(data => {
-              this.latitude = <string>data.lat;
-              this.longitude = <string>data.lng;
-              console.log('Latitude: ' + this.latitude);
-              console.log('Longitude: ' + this.longitude);
-              sessionStorage.setItem('latitude', this.latitude);
-              sessionStorage.setItem('longitude', this.longitude);
-          });
-      }
-    );
-  }
+    sGetCurrentPosition(){
+        if(!sessionStorage.getItem('latitude') || !sessionStorage.getItem('longitude')){
+            navigator.geolocation.getCurrentPosition(
+                // Success callback.
+                (position: Position) => {
+                    console.log('Latitude: ' + position.coords.latitude);
+                    console.log('Longitude: ' + position.coords.longitude);
+                    this.latitude = position.coords.latitude.toString();
+                    this.longitude = position.coords.longitude.toString();
+                    sessionStorage.setItem('latitude', this.latitude);
+                    sessionStorage.setItem('longitude', this.longitude);
+                },
+                // Error callback.
+                (error: PositionError) => {
+                    console.log('Geolocation service: ' + error.message);
+                    this.sGetCurrentLocationGMaps().subscribe(data => {
+                        this.latitude = <string>data.lat;
+                        this.longitude = <string>data.lng;
+                        console.log('Latitude: ' + this.latitude);
+                        console.log('Longitude: ' + this.longitude);
+                        sessionStorage.setItem('latitude', this.latitude);
+                        sessionStorage.setItem('longitude', this.longitude);
+                    });
+                }
+            );
+        }
+
+    }
     // Invokes getCurrentPosition method of Geolocation API.
     //the observer way
     sGetCurrentLocationGMaps(){

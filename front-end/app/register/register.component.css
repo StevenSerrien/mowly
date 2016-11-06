@@ -172,6 +172,11 @@ input {
 
 }
 
+/* CARD ON GREY BACKGROUND */
+
+
+
+
 .saveMenuButton {
   margin-top: 30px !important;
 }
@@ -188,7 +193,7 @@ button[disabled]{
 }
 
 i.removeItem {
-  
+
   position: relative !important;
   left: -8px;
 

@@ -1,4 +1,8 @@
+<section class="register-1">
+
+<div class="register-card-white clearfix  animated slideInLeft">
 <div class="row">
+  
   <div class="col-sm-12 col-md-12">
     <h4 class='text-center register-subtitle'>{{greetmessage}}</h4>
     <h5 class='text-center register-subtitle'>{{stepnumber}}</h5>
@@ -7,11 +11,11 @@
 <div class="row">
   <div class="inner register">
           <!-- Form Area -->
-          <div class="register-form">
+          <div class="register-form clearfix">
               <!-- Form -->
               <form id="register" method="post" action="#">
                   <!-- Left Inputs -->
-                  <div class="col-xs-12 col-md-6 col-md-offset-3 animated slideInLeft" >
+                  <div class="col-xs-12 col-md-6 col-md-offset-3" >
                       <!-- Name -->
                       <input type="text" [(ngModel)]="name" name="name" id="name" required="required" class="form" placeholder="Name" />
                       <!-- Email -->
@@ -35,3 +39,5 @@
       </div><!-- End Inner -->
 
 </div>
+</div>
+</section>

@@ -127,27 +127,32 @@ button.submit, .edit-profile-card button {
   margin-left: 20px;
   margin-top: 10px;
 }
+@media (min-width: 800px) {
 
-.user-profile-pic-container {
-  border-left: 1px solid rgb(209, 209, 209);
-}
 
-/*background-image:url('../images/profile-pic.jpg');*/
-.user-profile-pic {
-  background: url('../images/profile-pic.jpg');
-  background-size:cover;
-  z-index: 9999;
-  position: relative;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  background-position: 30% 20%;
-  box-shadow: 0px 0px 0px 2pt transparent;
-  border: 0px solid #FFF;
-  margin: auto;
-box-shadow: 0 2px 0 rgba(0,0,0,0.06);
-  width:250px;
-  height:250px;
+  .user-profile-pic-container {
+    border-left: 1px solid rgb(209, 209, 209);
+  }
+
+  /*background-image:url('../images/profile-pic.jpg');*/
+  .user-profile-pic {
+    background: url('../images/profile-pic.jpg');
+    background-size:cover;
+    z-index: 9999;
+    position: relative;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-position: 30% 20%;
+    box-shadow: 0px 0px 0px 2pt transparent;
+    border: 0px solid #FFF;
+    margin: auto;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+    width:250px;
+    height:250px;
+  }
+
+
 }
 
 .form{

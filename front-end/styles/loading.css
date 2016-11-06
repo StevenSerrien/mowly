@@ -2,9 +2,9 @@
 
   font-size: 10em !important;
   color: #f65d59;
-  position: fixed;
+  /*position: fixed;
   top: 45%;
-  left: 45%;
+  left: 45%;*/
   /* bring your own prefixes */
   transform: translate(-45%, -45%);
 }

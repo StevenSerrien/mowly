@@ -65,7 +65,7 @@ width: 150px;
     border-radius: 5px;
   }
 
-  button#submit {
+  button.submit {
     display:block;
     width: 100%;
   }
@@ -90,13 +90,13 @@ width: 150px;
 
 
 /* Input Styles */
-form#edit-profile h5 {
+form.edit-profile h5 {
   color: grey;
   font-family: 'Open Sans', cursive;
   font-size: 1.2em;
 }
 
-button#submit {
+button.submit {
   display:inline-block;
 }
 
@@ -346,4 +346,8 @@ button#submit {
   width: 100%;
   position: absolute;
   bottom: 0;
+}
+
+.clickable{
+    cursor: pointer;
 }

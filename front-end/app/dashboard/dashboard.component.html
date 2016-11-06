@@ -8,123 +8,120 @@
 
 
 <section id="dashboard">
-  <div class='container'>
-    <h2>YOUR PROFILE</h2>
-    <div class='profile-template'>
-      <div class="row">
-
-
-          <!--user details view-->
-          <div class='col-xs-12 col-md-7' *ngIf="detailsSectionState == 'viewdetails'">
-
-                  <!-- Left Inputs -->
-                  <div class="col-xs-12 col-md-12" >
-                      <h5>Your personal info here</h5>
-                  </div>
-                  <div class="col-xs-12 col-md-12" >
-                     <h1>{{user?.name}}</h1>
-                  </div>
-                  <div class="col-xs-12 col-md-12" >
-                      <h4>{{user?.email}}</h4>
-                  </div>
-                  <div class="col-xs-12 col-md-12" >
-                      <button  name="submit" class="form-btn semibold" [(disabled)]="loading" (click)="changeState('editdetails')">EDIT DETAILS</button>
-                      <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-                  </div>
-
-                  <div class="col-xs-12 col-md-12" >
-                      <button  name="submit" class="form-btn semibold" [(disabled)]="loading" (click)="changeState('editpassword')">EDIT PASSWORD</button>
-                      <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-                  </div>
-
-                  <div class="col-xs-12 col-md-6" >
-                      <div class="errorMessage animated bounceIn" *ngIf="errorMessage">
-
-                      </div>
-                  </div>
-          </div>
-
-
-          <!--edit details view-->
-        <div class='col-xs-12 col-md-7' *ngIf="detailsSectionState == 'editdetails'">
-          <form id="edit-profile" >
-
-              <!-- Left Inputs -->
-              <div class="col-xs-12 col-md-12" >
-                <h5>Edit your personal settings here</h5>
-              </div>
-              <div class="col-xs-12 col-md-6" >
-                <input type="name" [(ngModel)]="model.name" value="{{user?.name}}"name="name" id="name" required="required" class="form"  />
-              </div>
-              <div class="col-xs-12 col-md-6" >
-                <input type="email" [(ngModel)]="model.email" value="{{user?.email}}" name="mail" id="mail" required="required" class="form"  />
-              </div>
-              <div class="col-xs-12 col-md-6" >
-              <button type="submit" id="submit" name="submit" class="form-btn semibold" [(disabled)]="!loading">SAVE</button>
-                  <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-              </div>
-
-              <div class="col-xs-12 col-md-6" >
-                <div class="errorMessage animated bounceIn" *ngIf="errorMessage">
-
+    <div class='container'>
+        <h2>YOUR PROFILE</h2>
+        <div class='profile-template'>
+            <div class="row">
+                <div class="col-xs-12 col-md-12" *ngIf="detailsSectionState != 'viewdetails'" (click)="changeState('viewdetails')">
+                    <i class="fa fa-arrow-left fa-3X clickable" aria-hidden="true"></i>
                 </div>
-              </div>
-          </form>
+                <!--user details view-->
+                <div class='col-xs-12 col-md-7' *ngIf="detailsSectionState == 'viewdetails'">
+                    <!-- Left Inputs -->
+                    <div class="col-xs-12 col-md-12" >
+                        <h5>Your personal info here</h5>
+                    </div>
+                    <div class="col-xs-12 col-md-12" >
+                        <h1>{{user?.name}}</h1>
+                    </div>
+                    <div class="col-xs-12 col-md-12" >
+                        <h4>{{user?.email}}</h4>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <button  name="submit" class="form-btn semibold" [(disabled)]="loading" (click)="changeState('editdetails')">EDIT DETAILS</button>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                        <button  name="submit" class="form-btn semibold" [(disabled)]="loading" (click)="changeState('editpassword')">EDIT PASSWORD</button>
+                    </div>
+                    <div class="col-xs-12 col-md-6" *ngIf="errorMessage">
+                        <div class="errorMessage animated bounceIn" >
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--edit details view-->
+                <div class='col-xs-12 col-md-7' *ngIf="detailsSectionState == 'editdetails'">
+                    <form class="edit-profile" >
+
+                        <!-- Left Inputs -->
+                        <div class="col-xs-12 col-md-12" >
+                            <h5>Edit your personal settings here</h5>
+                        </div>
+                        <div class="col-xs-12 col-md-12" >
+                            <input type="name" [(ngModel)]="model.name" value="Name"name="name" id="name" required="required" class="form"  />
+                        </div>
+                        <div class="col-xs-12 col-md-12" >
+                            <input type="email" [(ngModel)]="model.email" value="Email" name="mail" id="mail" required="required" class="form"  />
+                        </div>
+                        <div class="col-xs-12 col-md-6" >
+                            <button type="submit" class="submit" name="submit" class="form-btn semibold" [(disabled)]="loading" (click)="changeUserDetails()">SAVE</button>
+                            <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6" >
+                            <div class="errorMessage animated bounceIn" *ngIf="errorMessage">
+                                {{errorMessage}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!--edit password view-->
+                <div class='col-xs-12 col-md-7' *ngIf="detailsSectionState == 'editpassword'">
+                    <form class="edit-profile" >
+
+                        <!-- Left Inputs -->
+                        <div class="col-xs-12 col-md-12" >
+                            <h5>Edit your password here</h5>
+                        </div>
+                        <div class="col-xs-12 col-md-12" >
+                            <input type="password" [(ngModel)]="model.old_password" name="oldpassword" id="oldpassword" required="required" class="form" placeholder="Old Password" />
+                        </div>
+                        <div class="col-xs-12 col-md-12" >
+                            <input type="password" [(ngModel)]="model.new_password" name="newpassword" id="newpassword" required="required" class="form" placeholder="New Password" />
+                        </div>
+                        <div class="col-xs-12 col-md-6" >
+                            <button type="submit" class="submit" name="submit" class="form-btn semibold" [(disabled)]="loading" (click)="changeUserPassword()">SAVE</button>
+                            <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6" >
+                            <div class="errorMessage animated bounceIn" *ngIf="errorMessage">
+                                {{errorMessage}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class='col-xs-12 col-md-2'>
+                </div>
+                <div class='col-xs-12 col-md-3 user-outer'>
+                    <span class='settings-icon' [ngClass]="{'fa-spin fa-fw': loading}"></span>
+                </div>
+            </div>
         </div>
-
-          <!--edit password view-->
-          <div class='col-xs-12 col-md-7' *ngIf="detailsSectionState == 'editpassword'">
-              <form id="edit-profile" >
-
-                  <!-- Left Inputs -->
-                  <div class="col-xs-12 col-md-12" >
-                      <h5>Edit your password here</h5>
-                  </div>
-                  <div class="col-xs-12 col-md-12" >
-                      <input type="password" [(ngModel)]="model.old_password" name="oldpassword" id="oldpassword" required="required" class="form" placeholder="Old Password" />
-                  </div>
-                  <div class="col-xs-12 col-md-12" >
-                      <input type="password" [(ngModel)]="model.new_password" name="newpassword" id="newpassword" required="required" class="form" placeholder="New Password" />
-                  </div>
-                  <div class="col-xs-12 col-md-6" >
-                      <button type="submit" id="submit" name="submit" class="form-btn semibold" [(disabled)]="!loading">SAVE</button>
-                      <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
-                  </div>
-
-                  <div class="col-xs-12 col-md-6" >
-                      <div class="errorMessage animated bounceIn" *ngIf="errorMessage">
-
-                      </div>
-                  </div>
-              </form>
-          </div>
-        <div class='col-xs-12 col-md-2'>
+        <h2>YOUR PLACES</h2>
+        <div class="dashboard-template">
+            <div class='row'>
+                <div *ngFor="let place of places" class='col-lg-4 col-xs-12'>
+                    <div class="place-item">
+                        <div class="place-item-title">
+                            <h5 class="text-center">{{place.name}}</h5>
+                        </div>
+                        <div class="place-item-content">
+                            <address><p>{{place.streetname}} {{place.housenumber}}</p> <p>{{place.city}}, {{place.country}}</p></address>
+                            <!-- <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p> -->
+                        </div>
+                        <div class='place-item-menu-button hi-icon-wrap hi-icon-effect-2 hi-icon-effect-2a'>
+                            <a class="hi-icon hi-icon-pencil" (click)="onSelect(place)"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class='col-xs-12 col-md-3 user-outer'>
-          <span class='settings-icon'></span>
-        </div>
-      </div>
     </div>
-    <h2>YOUR PLACES</h2>
-    <div class="dashboard-template">
-    <div class='row'>
-        <div *ngFor="let place of places" class='col-lg-4 col-xs-12'>
-          <div class="place-item">
-            <div class="place-item-title">
-              <h5 class="text-center">{{place.name}}</h5>
-            </div>
-            <div class="place-item-content">
-            <address><p>{{place.streetname}} {{place.housenumber}}</p> <p>{{place.city}}, {{place.country}}</p></address>
-            <!-- <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p> -->
-            </div>
-            <div class='place-item-menu-button hi-icon-wrap hi-icon-effect-2 hi-icon-effect-2a'>
-              <a class="hi-icon hi-icon-pencil" (click)="onSelect(place)"></a>
-            </div>
-            </div>
-        </div>
-    </div>
-    </div>
-  </div>
 </section>
 
 <!-- <div class="container" *ngIf="!loading">

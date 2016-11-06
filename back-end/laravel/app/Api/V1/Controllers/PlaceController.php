@@ -49,6 +49,8 @@ class PlaceController extends Controller
         if ($place->user_id == $user->id)
         {
             $place->delete();
+            return 'Place deleted';
+
         }
         else{
             return Response::make(['errors' => [['Only owner can delete.']]], 401);

@@ -50,6 +50,7 @@ class DrinkController extends Controller
         if ($drink->place->user_id == $user->id)
         {
             $drink->delete();
+            return 'Drink deleted';
         }
         else{
             return Response::make(['errors' => [['Only owner can delete.']]], 401);

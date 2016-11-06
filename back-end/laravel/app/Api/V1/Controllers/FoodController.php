@@ -51,6 +51,8 @@ class FoodController extends Controller
         if ($food->place->user_id == $user->id)
         {
             $food->delete();
+            return 'Food deleted';
+
         }
         else{
             return Response::make(['errors' => [['Only owner can delete.']]], 401);

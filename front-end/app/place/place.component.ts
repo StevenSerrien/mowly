@@ -63,7 +63,7 @@ export class PlaceComponent {
             let id = +params['id']; // (+) converts string 'id' to a number
             this.placeservice.sGetPlace(id).subscribe(place => {
                     this.place = place;
-                    if(this.place.user_id = this.user.id)
+                    if(this.place.user_id == this.user.id)
                     {
                         this.isOwnedByLoggedInUser = true;
                     }
@@ -126,7 +126,17 @@ export class PlaceComponent {
     }
     exitEditMode(){
         this.editMode = false;
-    }
+        this.drinkForm = this._fb.group({
+            drinks: this._fb.array([
+                this.initDrink(),
+            ])
+        });
+        this.foodForm = this._fb.group({
+
+            foods: this._fb.array([
+                this.initFood(),
+            ])
+        });    }
 
     // Save menu logic
     saveMenu() {
@@ -180,7 +190,7 @@ export class PlaceComponent {
 
                 });
     }
-    removeDrink(drink: Drink){
+    deleteDrink(drink: Drink){
         this.drinkService.removeDrink(drink.id).subscribe(response => {
                 var index = this.place.drinks.indexOf(drink);
                 if (index > -1) {
@@ -197,7 +207,7 @@ export class PlaceComponent {
             });
     }
 
-    removeFood(food: Food){
+    deleteFood(food: Food){
         this.foodService.removeFood(food.id).subscribe(response => {
                 var index = this.place.foods.indexOf(food);
                 if (index > -1) {

@@ -25,7 +25,7 @@
                     <div class='menu-item'>
                         <div class='col-xs-8 menu-food'>
                             <div class='menu-name text-left'>
-                                <i class="fa fa-minus delete clickable" aria-hidden="true" *ngIf="editMode"></i>
+                                <i class="fa fa-minus delete clickable" (click)="deleteFood(food)" aria-hidden="true" *ngIf="editMode"></i>
                                 {{food.name}}
                             </div>
                             <div class='menu-description text-left'>
@@ -48,7 +48,7 @@
                     <div class='menu-item'>
                         <div class='col-xs-8 menu-food'>
                             <div class='menu-name text-left'>
-                                <i class="fa fa-minus delete clickable" (click)="removeDrink(drink)" aria-hidden="true" *ngIf="editMode"></i>
+                                <i class="fa fa-minus delete clickable" (click)="deleteDrink(drink)" aria-hidden="true" *ngIf="editMode"></i>
                                 {{drink.name}}
                             </div>
                             <div class='menu-description text-left'>

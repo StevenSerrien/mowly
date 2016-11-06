@@ -55,7 +55,7 @@ export class LoginComponent {
       .subscribe(result => {
         if (result === true) {
           this.errorMessage = null;
-          this.loading = true;
+          this.loading = false;
           // login successful
           //this.token = this.authenticationService.token;
 
@@ -65,7 +65,7 @@ export class LoginComponent {
           //     .subscribe(user => {
           //           //put fetched user data in local storage.
           //           localStorage.setItem('user', JSON.stringify(user));
-          //           this.router.navigate(['dashboard']);
+                    this.router.navigate(['dashboard']);
           //           this.loading = false;
           //         },
           //         err => {

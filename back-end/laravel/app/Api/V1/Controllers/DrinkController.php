@@ -15,46 +15,60 @@ use Illuminate\Support\Facades\Input;
 
 class DrinkController extends Controller
 {
-  use Helpers;
+    use Helpers;
 
-  public function store(Request $request)
-  {
+    public function store(Request $request)
+    {
 
-    // Check if place_id sent with POST exists in database
-    // If fails then ModelNotFoundException
-    $place = Place::findOrFail($request->get('place_id'));
+        // Check if place_id sent with POST exists in database
+        // If fails then ModelNotFoundException
+        $place = Place::findOrFail($request->get('place_id'));
 
-    //check if logged in user is owner of place before adding food.
-    if ($place->user_id === $this->currentUser()->id) {
-      //Creates new databaserecord in drinktable with info from request
-      $drink = new Drink;
-      $drink->name = $request->get('name');
-      $drink->description = $request->get('description');
-      $drink->price = $request->get('price');
+        //check if logged in user is owner of place before adding food.
+        if ($place->user_id === $this->currentUser()->id) {
+            //Creates new databaserecord in drinktable with info from request
+            $drink = new Drink;
+            $drink->name = $request->get('name');
+            $drink->description = $request->get('description');
+            $drink->price = $request->get('price');
 
-      if($place->drinks()->save($drink))
-      //Returns drinkobject on completion
-      return $drink;
-      else
-      return $this->response->error('could_not_create_drink', 500);
+            if($place->drinks()->save($drink))
+                //Returns drinkobject on completion
+                return $drink;
+            else
+                return $this->response->error('could_not_create_drink', 500);
+        }
+        else {
+            return $this->response->error('Only_place_owner_can_add_foods', 500);
+        }
     }
-    else {
-      return $this->response->error('Only_place_owner_can_add_foods', 500);
+
+    public function delete($id)
+    {
+        $drink = Drink::with('place')->find($id);
+        $user = $this->currentUser();
+        if ($drink->place->user_id == $user->id)
+        {
+            $drink->delete();
+            return 'Drink deleted';
+        }
+        else{
+            return Response::make(['errors' => [['Only owner can delete.']]], 401);
+        }
     }
-  }
 
 // search for drinks and return every place that has it.
-  public function searchDrinks(Request $request)
-  {
-    //searchstring can not be empty
-    if ($request->input("drinkquery") == '') {
-      return 'Empty searchstring :-(';
-    } else {
-      $query =  '%'.$request->input("drinkquery").'%';
-      $drinks = Drink::with('place')->where('name', 'LIKE', $query)->get();
-      return $drinks;
+    public function searchDrinks(Request $request)
+    {
+        //searchstring can not be empty
+        if ($request->input("drinkquery") == '') {
+            return 'Empty searchstring :-(';
+        } else {
+            $query =  '%'.$request->input("drinkquery").'%';
+            $drinks = Drink::with('place')->where('name', 'LIKE', $query)->get();
+            return $drinks;
+        }
     }
-  }
 
     // search for drinks and return every place that has it.
     public function searchDrinksWithLocation(Request $request)
@@ -77,9 +91,9 @@ class DrinkController extends Controller
         }
     }
 
-  //easy function that returns currently logged in user
-  private function currentUser()
-  {
-    return JWTAuth::parseToken()->authenticate();
-  }
+    //easy function that returns currently logged in user
+    private function currentUser()
+    {
+        return JWTAuth::parseToken()->authenticate();
+    }
 }

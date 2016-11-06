@@ -22,7 +22,9 @@ $api->version('v1', function ($api) {
     $api->group(['middleware' => ['api.auth']], function ($api) {
         $api->post('place/store', 'App\Api\V1\Controllers\PlaceController@store');
         $api->post('food/store', 'App\Api\V1\Controllers\FoodController@store');
+        $api->delete('food/delete/{id}', 'App\Api\V1\Controllers\FoodController@delete');
         $api->post('drink/store', 'App\Api\V1\Controllers\DrinkController@store');
+        $api->delete('drink/delete/{id}', 'App\Api\V1\Controllers\DrinkController@delete');
         $api->get('user/getloggedin', 'App\Api\V1\Controllers\UserController@getLoggedInUser');
         $api->post('user/edituserdata', 'App\Api\V1\Controllers\UserController@editUserData');
         $api->post('user/edituserpassword', 'App\Api\V1\Controllers\UserController@editUserPassword');

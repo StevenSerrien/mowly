@@ -42,4 +42,11 @@ export class DrinkService {
             .map(response => <Drink>response.json().drink)
             .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
     }
+
+    // Delete a drink
+    removeDrink(id: number){
+        return this.authHttp.delete(`${AppSettings.API_ENDPOINT}/drink/delete/${id}`) // ...using put request
+            .map((res:Response) => res)
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    }
 }

@@ -48,4 +48,11 @@ export class FoodService {
     .map(response => <Food>response.json().food)
     .catch((error:any) => Observable.throw(error.json().errors[0] || 'Server error'));
   }
+
+    // Delete a drink
+    removeFood(id: number){
+        return this.authHttp.delete(`${AppSettings.API_ENDPOINT}/food/delete/${id}`) // ...using put request
+            .map((res:Response) => res)
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    }
 }

@@ -60,19 +60,20 @@ export class LoginComponent {
           //this.token = this.authenticationService.token;
 
           //var token = localStorage.getItem('id_token');
-          this.userService.sGetLoggedInUserData()
-              .subscribe(user => {
-                    //put fetched user data in local storage.
-                    localStorage.setItem('user', JSON.stringify(user));
-                    this.router.navigate(['dashboard']);
-                    this.loading = false;
-                  },
-                  err => {
-                    // user fetch failed
-                    this.errorMessage = err;
-                    alert(this.errorMessage);
-                    this.loading = false;
-                  });
+
+          // this.userService.sGetLoggedInUserData()
+          //     .subscribe(user => {
+          //           //put fetched user data in local storage.
+          //           localStorage.setItem('user', JSON.stringify(user));
+          //           this.router.navigate(['dashboard']);
+          //           this.loading = false;
+          //         },
+          //         err => {
+          //           // user fetch failed
+          //           this.errorMessage = err;
+          //           alert(this.errorMessage);
+          //           this.loading = false;
+          //         });
 
 
         } else {

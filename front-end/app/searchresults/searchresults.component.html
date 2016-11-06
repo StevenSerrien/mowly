@@ -12,7 +12,8 @@
             <h2>{{place.name}}</h2>
             <p>{{place.streetname}} {{place.housenumber}}</p>
             <p>{{place.city}}, {{place.country}}</p>
-            <button class="btn btn-1 btn-1a" (click)="onSelect(place)">Menucard</button>
+              <p>Distance: {{place.distance}}m</p>
+            <button class="btn btn-1 btn-1a" (click)="onSelect(place.id)">Menucard</button>
           </div>
           </div>
 
@@ -22,11 +23,14 @@
  				<div class="col-md-4 col-sm-12 foodresults">
           <div>
  					<i class="fa fa-cutlery"></i>
-          <h4>Foods like '{{this.searchQuery}}' can be found here</h4>
+          <h4>Foods like '{{searchQuery}}' can be found here</h4>
           <div *ngFor="let food of foodsResults" class="text-center">
-            <h4>{{food.name}}</h4>
-            <p></p>
-            <p>{{food.price | currency:'EUR':true:'1.2-2'}}, <a href="javascript:void(0);" (click)="onSelect(food.place)">{{food.place.name}}</a></p>
+              <h4>{{food.name}}</h4>
+              <p></p>
+              <p>{{food.price | currency:'EUR':true:'1.2-2'}}</p>
+                <p>{{food.description}}</p>
+              <p><a href="javascript:void(0);" (click)="onSelect(food.place_id)">{{food.placeName}}</a></p>
+              <p>Distance: {{food.distance}}m</p>
           </div>
 
  				</div>
@@ -34,11 +38,12 @@
  				<div class="col-md-4 col-sm-12 drinkresults">
           <div>
  					<i class="fa fa-beer"></i>
-          <h4>Drinks like '{{this.searchQuery}}' can be found here</h4>
+          <h4>Drinks like '{{searchQuery}}' can be found here</h4>
           <div *ngFor="let drink of drinksResults" class="text-center">
             <h4>{{drink.name}}</h4>
             <p></p>
-            <p>{{drink.price | currency:'EUR':true:'1.2-2'}}, <a href="javascript:void(0);" (click)="onSelect(drink.place)">{{drink.place.name}}</a></p>
+            <p>{{drink.price | currency:'EUR':true:'1.2-2'}}, <a href="javascript:void(0);" (click)="onSelect(drink.place_id)">{{drink.placeName}}</a></p>
+              <p>Distance: {{drink.distance}}m</p>
           </div>
 
  				</div>

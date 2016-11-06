@@ -31,7 +31,7 @@ export class CrudPlaceComponent {
 
   ngOnInit() {
 
-    this.geolocationService.getCurrentPosition();
+    //this.geolocationService.getCurrentPosition();
 
   }
   mapstest(address){

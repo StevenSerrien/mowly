@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-12 col-md-12">
-    <h4 class='text-center register-subtitle'>{{greetmessage}}</h4>
+    <h4 class='text-center register-subtitle'>{{greetmessage}} of {{place?.name}}</h4>
     <h5 class='text-center register-subtitle'>{{stepnumber}}</h5>
   </div>
 </div>
 <div class="row">
   <div class="inner register">
-    <h1>place : {{place?.name}}</h1>
+
           <!-- Form Area -->
           <div class="register-form" *ngIf="!loading">
             <!-- Form -->
@@ -74,7 +74,7 @@
                       </small> -->
                     </div>
                     <div class="col-xs-4">
-                      <input type="text" name="price" id="price" required="required" class="form" placeholder="price" formControlName="price" />
+                        <input type="number" name="price" id="price" required="required" class="form" placeholder="price (e.g. 19.20)" formControlName="price" />
                     </div>
                     <div class="col-xs-12">
                       <input type="text" name="description" id="description" required="required" class="form" placeholder="description" formControlName="description" />

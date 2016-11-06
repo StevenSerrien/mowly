@@ -1,5 +1,68 @@
-<div class="col-lg-6 col-lg-offset-3" *ngIf="!loading">
-    <h2 class="wow animated bounceInLeft text-center">{{place?.name}}</h2>
+<section id="menu-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 hero-outer">
+        <h1 class="wow animated bounceInLeft text-center">{{place?.name}} menu</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="menu-card" *ngIf="!loading">
+<div class='container menu-card'>
+  <div class='row'>
+    <div class='menu-card-title'>
+    <h2>FOOD</h2>
+    </div>
+
+    <div class="foods" *ngIf="place?.foods[0]">
+    <div *ngFor="let food of place?.foods" class="text-center summing-up-block">
+      <div class='menu-item'>
+        <div class='col-xs-8 menu-food'>
+            <div class='menu-name text-left'>
+              {{food.name}}
+            </div>
+            <div class='menu-description text-left'>
+              {{food.description}}
+            </div>
+        </div>
+        <div class='col-xs-4'>
+          <div class="menu-price">
+              {{food.price | currency:'EUR':true}}
+          </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class='menu-card-title'>
+    <h2>DRINKS</h2>
+    </div>
+    <div class="drinks" *ngIf="place?.drinks[0]">
+    <div *ngFor="let drink of place?.drinks" class="text-center summing-up-block">
+      <div class='menu-item'>
+        <div class='col-xs-8 menu-food'>
+            <div class='menu-name text-left'>
+              {{drink.name}}
+            </div>
+            <div class='menu-description text-left'>
+              {{drink.description}}
+            </div>
+        </div>
+        <div class='col-xs-4'>
+          <div class="menu-price">
+              {{drink.price | currency:'EUR':true}}
+          </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+  </div>
+</div>
+</section>
+<!-- <div class="col-lg-6 col-lg-offset-3" *ngIf="!loading">
+
     <h3 [ngClass]="{'wow animated hinge': !place?.foods[0]}">Food</h3>
     <div class="foods" *ngIf="place?.foods[0]">
     <div *ngFor="let food of place?.foods" class="text-center summing-up-block">
@@ -23,4 +86,4 @@
 
 <div class="col-lg-6 col-lg-offset-3 text-center" *ngIf="loading">
     <h2>Loading hold on...</h2>
-</div>
+</div> -->

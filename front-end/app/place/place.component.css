@@ -1,3 +1,87 @@
-h2 {
-  color: #f65d59;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+section#menu-hero h1 {
+  color: white;
+  font-size: 5em;
+  text-transform: uppercase;
 }
+
+section#menu-hero {
+
+  height: 25vh;
+	background-image:url('../images/menu-hero-2.jpg');
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center;
+}
+
+section#menu-card {
+  margin-top: 50px;
+  padding-bottom: 100px;
+}
+
+.menu-card {
+  margin-top: 20px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  min-height: 600px;
+}
+
+
+.hero-outer {
+  padding-top: 20px;
+}
+
+.menu-card-title {
+
+
+}
+
+.menu-card-title h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 20px 30px;
+  font-family: 'Roboto Slab', sans-serif !important;
+  letter-spacing: 0.5em;
+  font-weight: 100;
+  color: rgb(218, 218, 218);
+  /*border-bottom: 1px solid rgb(218, 218, 218);*/
+  width: 90%;
+}
+
+
+
+.menu-name {
+  font-family: 'Roboto Slab', sans-serif;
+
+}
+
+.menu-item {
+  padding-bottom: 75px;
+}
+
+.foods, .drinks {
+  margin-top: 30px;
+  padding-left: 20px;
+}
+
+
+
+
+
+
+/*section#business h2 {
+
+  color: white;
+  font-family: "Valera Round", sans-serif;
+  font-size: 4em;
+  position: relative !important;
+  top: 60% !important;
+}
+
+section#business p {
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 2em;
+  font-weight: 100;
+}*/

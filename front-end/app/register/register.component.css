@@ -188,7 +188,7 @@ button[disabled]{
 }
 
 i.removeItem {
-  font-size: 2px;
+  
   position: relative !important;
   left: -8px;
 

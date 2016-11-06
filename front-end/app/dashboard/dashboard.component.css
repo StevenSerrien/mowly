@@ -1,3 +1,276 @@
+/*section#dashboard-hero{
+  height: 8vh;
+  background-color: rgb(231, 231, 231);
+  color: white;
+
+}*/
+
+section#dashboard h2 {
+  color: rgb(78, 78, 78);
+}
+
+/*content: "\f0ca";*/
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+.profile-template {
+  position: relative;
+  min-height: 300px;
+  min-width: 300px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.user-outer {
+  position: relative;
+}
+.settings-icon {
+  position: relative;
+  display: block;
+padding-right: 40px;
+margin-right: 40px;
+height: 130px;
+background-image: url(../images/settings.svg);
+background-repeat: no-repeat;
+vertical-align: top;
+top: 75px;
+float: left;
+width: 150px;
+
+}
+
+@media (max-width: 992px) {
+  .settings-icon {
+    position: relative;
+    display: block;
+    padding-right: 40px;
+    margin-right: 40px;
+    height: 130px;
+    background-image: none;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    top: 75px;
+    float: left;
+    width: 150px;
+  }
+
+  .errorMessage {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    position: relative;
+    padding: 25px 50px;
+    top: 30px;
+    border: 1px solid #f47976;
+    border-radius: 5px;
+  }
+
+  button#submit {
+    display:block;
+    width: 100%;
+  }
+
+
+}
+/* ERRORMESSAGE */
+.errorMessage {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+
+  padding: 25px 50px;
+
+  border: 2px solid #f47976;
+  border-radius: 5px;
+}
+/* FORM STYLES */
+
+.register-form {
+  margin-top: 50px;
+}
+
+
+/* Input Styles */
+form#edit-profile h5 {
+  color: grey;
+  font-family: 'Open Sans', cursive;
+  font-size: 1.2em;
+}
+
+button#submit {
+  display:inline-block;
+}
+
+
+ .form{
+   width: 100%;
+   padding: 15px;
+   background:#f8f8f8;
+   border:1px solid rgba(0, 0, 0, 0.075);
+   margin-bottom:25px;
+   color:#727272 !important;
+   font-size:13px;
+   -webkit-transition: all 0.4s;
+   -moz-transition: all 0.4s;
+   transition: all 0.4s;
+ }
+
+ .form:hover{
+   border:1px solid #f65d59;
+ }
+
+ .form:focus{
+   color: white;
+   outline: none;
+   border:1px solid #f65d59;
+ }
+
+ .textarea{
+   height: 200px;
+   max-height: 200px;
+   max-width: 100%;
+ }
+
+/* Generic Button Styles */
+
+ .button{
+   padding:8px 12px;
+   background:#0A5175;
+   display: block;
+   width:120px;
+   margin:10px 0 0px 0;
+   border-radius:3px;
+   -webkit-transition: all 0.3s;
+   -moz-transition: all 0.3s;
+   transition: all 0.3s;
+   text-align:center;
+   font-size:0.8em;
+   box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+   -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+   -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+ }
+
+ .button:hover{
+   background:#8BC3A3;
+   color:white;
+ }
+
+/* Send Button Styles */
+
+ .form-btn{
+   width:180px;
+   display: block;
+   height: auto;
+   padding:15px;
+   color:#fff;
+   background:#f65d59;
+   border:none;
+   border-radius:3px;
+   outline: none;
+   -webkit-transition: all 0.3s;
+   -moz-transition: all 0.3s;
+   transition: all 0.3s;
+   margin:auto;
+   box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+   -moz-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+   -webkit-box-shadow: 0px 1px 4px rgba(0,0,0, 0.10);
+ }
+
+ .form-btn:hover{
+   background:#e2524e;
+   color: white;
+   border:none;
+ }
+
+ .form-btn:active{
+   opacity: 0.9;
+ }
+
+/* FOR BUTTON IN ITEM */
+.hi-icon-wrap {
+	text-align: center;
+	margin: 0 auto;
+	padding: 2em 0 3em;
+}
+
+.hi-icon {
+	display: inline-block;
+	font-size: 0px;
+	cursor: pointer;
+	margin: 15px 30px;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	color: #fff;
+  text-decoration: none;
+  top: -70px;
+  left: 110px;
+}
+
+.hi-icon:after {
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	content: '';
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.hi-icon:before {
+	font-family: 'fontawesome';
+	speak: none;
+	font-size: 30px;
+	line-height: 60px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+}
+
+.hi-icon-pencil:before {
+	content: "\f0ca";
+}
+
+/* Effect 2 */
+.hi-icon-effect-2 .hi-icon {
+	color: #f65d59;
+	box-shadow: 0 0 0 3px #fff;
+	-webkit-transition: color 0.3s;
+	-moz-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.hi-icon-effect-2 .hi-icon:after {
+	top: -2px;
+	left: -2px;
+	padding: 2px;
+	z-index: -1;
+	background: #fff;
+	-webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.2s, opacity 0.2s;
+	transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Effect 2a */
+.hi-icon-effect-2a .hi-icon:hover {
+	color: #f4726f;
+}
+
+.hi-icon-effect-2a .hi-icon:hover:after {
+	-webkit-transform: scale(0.85);
+	-moz-transform: scale(0.85);
+	-ms-transform: scale(0.85);
+	transform: scale(0.85);
+}
+
+
 .form-btn{
     width:180px;
     display: block;
@@ -27,6 +300,50 @@
     opacity: 0.9;
 }
 
-section#dashboard {
-    padding-bottom: 80px;
+.dashboard-template {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.place-item {
+  position: relative;
+  min-height: 300px;
+  min-width: 300px;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-bottom: 20px;
+  background-color: rgba(247, 247, 247, 0.86);
+}
+
+.place-item-title {
+  background-color: #ed706d;
+  /*background-image:url('../images/business-hero.jpg');*/
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-position:center;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Valera Round', sans-serif;
+  padding: 10px 0px;
+}
+
+.place-item-title h5 {
+  font-size: 1.5em;
+}
+
+.place-item-content {
+  padding: 30px 15px;
+}
+
+.place-item-content p{
+
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.place-item-menu-button {
+  background-color: white;
+  height: 65px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

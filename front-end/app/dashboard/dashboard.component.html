@@ -12,9 +12,49 @@
     <h2>YOUR PROFILE</h2>
     <div class='profile-template'>
       <div class="row">
-        <div class='col-xs-12 col-md-9'></div>
+        <div class='col-xs-12 col-md-7'>
+          <form id="edit-profile" >
+
+              <!-- Left Inputs -->
+              <div class="col-xs-12 col-md-12" >
+                <h5>Edit your personal settings here</h5>
+              </div>
+              <div class="col-xs-12 col-md-6" >
+                <input type="name" [(ngModel)]="model.name" value="{{user?.name}}"name="name" id="name" required="required" class="form"  />
+              </div>
+              <div class="col-xs-12 col-md-6" >
+                <input type="email" [(ngModel)]="model.email" value="{{user?.email}}" name="mail" id="mail" required="required" class="form"  />
+              </div>
+              <div class="col-xs-12 col-md-12" >
+                <input type="password" [(ngModel)]="model.password" name="password" id="password" required="required" class="form" placeholder="Password" />
+              </div>
+              <div class="col-xs-12 col-md-6" >
+              <button type="submit" id="submit" name="submit" class="form-btn semibold">SAVE</button>
+              </div>
+
+              <div class="col-xs-12 col-md-6" >
+                <div class="errorMessage animated bounceIn" *ngIf="errorMessage">
+
+                </div>
+              </div>
+
+              <!-- <div class="relative fullwidth col-xs-12 col-md-6 col-md-offset-3 text-center">
+                <div class="errorMessage animated bounceIn"*ngIf="errorMessage">
+                    {{errorMessage}}
+                </div>
+                <i *ngIf="loading" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                <span  *ngIf="loading" class="sr-only">Loading...</span>
+              </div>
+
+              <div class="clear"></div> -->
+
+          </form>
+
+        </div>
+        <div class='col-xs-12 col-md-2'>
+        </div>
         <div class='col-xs-12 col-md-3 user-outer'>
-          <span class='user-icon'></span>
+          <span class='settings-icon'></span>
         </div>
       </div>
     </div>
@@ -31,7 +71,7 @@
             <!-- <p><a href="javascript:void(0);"  (click)="onSelect(place)">Menu card</a></p> -->
             </div>
             <div class='place-item-menu-button hi-icon-wrap hi-icon-effect-2 hi-icon-effect-2a'>
-              <a class="hi-icon hi-icon-pencil" href=""></a>
+              <a class="hi-icon hi-icon-pencil" (click)="onSelect(place)"></a>
             </div>
             </div>
         </div>

@@ -49,6 +49,7 @@ export class DashboardComponent {
                   this.places = this.user.places;
                   this.base_url = AppSettings.BASE_URL;
                   this.loading = false;
+                  
 
                 }
               },

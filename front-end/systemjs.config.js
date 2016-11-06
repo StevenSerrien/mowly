@@ -25,6 +25,7 @@
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
+      'ng2-truncate': 'npm:ng2-truncate/dist'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -41,7 +42,11 @@
       },
       'angular2-jwt': {
           defaultExtension: 'js'
-      }
+      },
+        'ng2-truncate': {
+            main: 'index',
+            defaultExtension: 'js'
+        }
     }
   });
 })(this);

@@ -38,6 +38,8 @@ import { RegisterMenuComponent } from './register/register-menu.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddPlaceComponent } from "./addplace/addplace.component";
 import { TRUNCATE_PIPES } from 'ng2-truncate';
+import {enableProdMode} from '@angular/core';
+enableProdMode();
 
 
 

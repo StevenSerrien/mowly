@@ -41,7 +41,7 @@ export class PlaceComponent {
         private placeservice: PlaceService,
     private drinkService: DrinkService,
     private _fb: FormBuilder,
-    private foodService: FoodService) { }
+    private foodService: FoodService, private auth: AuthenticationService) { }
 
     ngOnInit() {
         this.drinkForm = this._fb.group({
@@ -63,10 +63,13 @@ export class PlaceComponent {
             let id = +params['id']; // (+) converts string 'id' to a number
             this.placeservice.sGetPlace(id).subscribe(place => {
                     this.place = place;
-                    if(this.place.user_id == this.user.id)
-                    {
-                        this.isOwnedByLoggedInUser = true;
+                    if(this.auth.loggedIn()){
+                        if(this.place.user_id == this.user.id)
+                        {
+                            this.isOwnedByLoggedInUser = true;
+                        }
                     }
+
                     this.loading = false;
                 },
                 err => {

@@ -12,8 +12,9 @@
 <section id="menu-card" *ngIf="!loading">
 
     <div class='container menu-card'>
-        <p *ngIf="isOwnedByLoggedInUser && !editMode" (click)="startEditMode()" class="clickable">Enter edit mode</p>
-        <p *ngIf="isOwnedByLoggedInUser && editMode" (click)="exitEditMode()" class="clickable">Exit edit mode</p>
+            <p *ngIf="isOwnedByLoggedInUser && !editMode" (click)="startEditMode()" class="clickable">Enter edit mode</p>
+            <p *ngIf="isOwnedByLoggedInUser && editMode" (click)="exitEditMode()" class="clickable">Exit edit mode</p>
+
 
         <div class='row'>
             <div class='menu-card-title'>
